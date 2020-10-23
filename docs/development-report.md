@@ -26,7 +26,7 @@ Please contact us!
 
 Thank you!
 
-[Alexandre Abreu](https://github.com/a3brx]), [Allan Borges](https://github.com/allanbbs), [Deborah Lago](https://github.com/deborahlago), [João Brandão](https://github.com/jbrandao99) e [Raul Viana](https://github.com/raulviana).
+[Alexandre Abreu](https://github.com/a3brx), [Allan Borges](https://github.com/allanbbs), [Deborah Lago](https://github.com/deborahlago), [João Brandão](https://github.com/jbrandao99) e [Raul Viana](https://github.com/raulviana).
 
 ---
 
