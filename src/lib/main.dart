@@ -32,7 +32,7 @@ class _SetUpPageState extends State<SetUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('                           Lobby'),
+          title: Text('HOMEPAGE'),
           actions: [
             IconButton(icon: Icon(Icons.settings), onPressed: _pushSaved),
           ],
@@ -40,8 +40,7 @@ class _SetUpPageState extends State<SetUpPage> {
         body: new Container(
             padding: new EdgeInsets.all(32.0),
             child: new Center(
-              child: new Column(
-
+              child: new ListView(
                 children:  <Widget>[
                   Image(image: AssetImage("images/speed_meeting.jpeg"),),
                   Padding( padding: EdgeInsets.only(top: 50),
