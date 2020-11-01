@@ -26,7 +26,7 @@ Please contact us!
 
 Thank you!
 
-[Alexandre Abreu](https://github.com/a3brx), [Allan Borges](https://github.com/allanbbs), [Deborah Lago](https://github.com/deborahlago), [João Brandão](https://github.com/jbrandao99) e [Raul Viana](https://github.com/raulviana).
+[Alexandre Abreu](https://github.com/a3brx), [Allan Borges](https://github.com/allanbbs), [Deborah Lago](https://github.com/deborahlago), [João Brandão](https://github.com/jbrandao99) and [Raúl Viana](https://github.com/raulviana).
 
 ---
 
@@ -159,9 +159,6 @@ Software project management is an art and science of planning and leading softwa
 In the context of ESOF, we expect that each team adopts a project management tool capable of registering tasks, assign tasks to people, add estimations to tasks, monitor tasks progress, and therefore being able to track their projects.
 
 Example of tools to do this are:
-  * [Trello.com](https://trello.com)
-  * [Github Projects](https://github.com/features/project-management/com)
-  * [Pivotal Tracker](https://www.pivotaltracker.com)
-  * [Jira](https://www.atlassian.com/software/jira)
+  * [Github Projects](https://github.com/features/project-management)
 
 We recommend to use the simplest tool that can possibly work for the team.
