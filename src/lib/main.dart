@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class SetUpPage extends StatefulWidget {
   @override
   _SetUpPageState createState() => _SetUpPageState();
@@ -26,7 +25,6 @@ class SetUpPage extends StatefulWidget {
 class _SetUpPageState extends State<SetUpPage> {
   final _suggestions = <WordPair>[];
   final _saved = Set<WordPair>();
-  var _counter = 0;
   final _biggerFont = TextStyle(fontSize: 18.0);
   @override
   Widget build(BuildContext context) {
@@ -41,28 +39,72 @@ class _SetUpPageState extends State<SetUpPage> {
             padding: new EdgeInsets.all(32.0),
             child: new Center(
               child: new ListView(
-                children:  <Widget>[
-                  Image(image: AssetImage("images/speed_meeting.jpeg"),),
-                  Padding( padding: EdgeInsets.only(top: 50),
-                      child: new ElevatedButton(onPressed: _pushSaved,
-                          child: Text("Create an Event",textAlign: TextAlign.center,),
-                          style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.red),
-                            foregroundColor:  MaterialStateProperty.resolveWith((states) => Colors.black),))),
-                  new ElevatedButton(onPressed: _pushSaved,
-                    child: Text("Participate in an Event",textAlign: TextAlign.center,textDirection: TextDirection.ltr,),
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.red),
-                      foregroundColor:  MaterialStateProperty.resolveWith((states) => Colors.black),),),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children : <Widget>[new ElevatedButton(onPressed: _pushSaved,
-                    child: Text("Edit Profile",textAlign: TextAlign.center,),
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.red),
-                        foregroundColor:  MaterialStateProperty.resolveWith((states) => Colors.black)),),
-                    new ElevatedButton(onPressed: _pushSaved,
-                      child: Text("Edit Event",textAlign: TextAlign.center,),
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.resolveWith((states) => Colors.red),
-                          foregroundColor:  MaterialStateProperty.resolveWith((states) => Colors.black)),)])
+                children: <Widget>[
+                  Image(
+                    image: AssetImage("images/speed_meeting.jpeg"),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(top: 50),
+                      child: new ElevatedButton(
+                          onPressed: _pushSaved,
+                          child: Text(
+                            "Create an Event",
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.resolveWith(
+                                (states) => Colors.red),
+                            foregroundColor: MaterialStateProperty.resolveWith(
+                                (states) => Colors.black),
+                          ))),
+                  new ElevatedButton(
+                    onPressed: _pushSaved,
+                    child: Text(
+                      "Participate in an Event",
+                      textAlign: TextAlign.center,
+                      textDirection: TextDirection.ltr,
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                          (states) => Colors.red),
+                      foregroundColor: MaterialStateProperty.resolveWith(
+                          (states) => Colors.black),
+                    ),
+                  ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        new ElevatedButton(
+                          onPressed: _pushSaved,
+                          child: Text(
+                            "Edit Profile",
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith(
+                                      (states) => Colors.red),
+                              foregroundColor:
+                                  MaterialStateProperty.resolveWith(
+                                      (states) => Colors.black)),
+                        ),
+                        new ElevatedButton(
+                          onPressed: _pushSaved,
+                          child: Text(
+                            "Edit Event",
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.resolveWith(
+                                      (states) => Colors.red),
+                              foregroundColor:
+                                  MaterialStateProperty.resolveWith(
+                                      (states) => Colors.black)),
+                        )
+                      ])
                 ],
               ),
-
             )));
   }
 
@@ -74,9 +116,8 @@ class _SetUpPageState extends State<SetUpPage> {
 
           final index = i ~/ 2; /*3*/
           if (index >= _suggestions.length) {
-            for(WordPair wp in generateWordPairs().take(10)) {
-              if (!_suggestions.contains(wp))
-                _suggestions.add(wp);
+            for (WordPair wp in generateWordPairs().take(10)) {
+              if (!_suggestions.contains(wp)) _suggestions.add(wp);
             }
           }
           return _buildRow(_suggestions[index]);
@@ -84,19 +125,21 @@ class _SetUpPageState extends State<SetUpPage> {
   }
 
   Widget _buildRow(WordPair pair) {
-    final already_saved = _saved.contains(pair);
+    final alreadySaved = _saved.contains(pair);
     return ListTile(
       title: Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
-      trailing: Icon(   // NEW from here...
-        already_saved ? Icons.favorite : Icons.favorite_border,
-        color: already_saved ? Colors.red : null,
+      trailing: Icon(
+        // NEW from here...
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : null,
       ),
-      onTap: () {      // NEW lines from here...
+      onTap: () {
+        // NEW lines from here...
         setState(() {
-          if (already_saved) {
+          if (alreadySaved) {
             _saved.remove(pair);
           } else {
             _saved.add(pair);
@@ -106,40 +149,18 @@ class _SetUpPageState extends State<SetUpPage> {
     );
   }
 
-  void _pushSaved(){
-    _counter++;
+  void _pushSaved() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         // NEW lines from here...
         builder: (BuildContext context) {
           return Scaffold(
-            appBar: AppBar(
-              title: Text('Redirect'),
-            ),
-            body: _buildSuggestions()
-          );
+              appBar: AppBar(
+                title: Text('Redirect'),
+              ),
+              body: _buildSuggestions());
         }, // ...to here.
       ),
     );
   }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
