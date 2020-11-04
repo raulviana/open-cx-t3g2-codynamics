@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "244827960150",
+    "firebase_url": "https://esof-codynamics.firebaseio.com",
+    "project_id": "esof-codynamics",
+    "storage_bucket": "esof-codynamics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244827960150:android:2434b76d58eb879463dcf7",
+        "android_client_info": {
+          "package_name": "com.codynamics.speed_meeting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244827960150-kql5ft2qb0806q3f940h7tm6vtrgnevh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-wY6TkxtyvKvPs-AcJCdn1aIplEcaeMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244827960150-kql5ft2qb0806q3f940h7tm6vtrgnevh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
