@@ -3,16 +3,16 @@ import 'package:speed_meeting/services/auth.dart';
 import 'package:speed_meeting/shared/constants.dart';
 import 'package:speed_meeting/shared/loading.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
 
   final Function toggleView;
-  SignIn({this.toggleView});
+  Register({this.toggleView});
 
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
 
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
@@ -28,11 +28,11 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.red,
         elevation: 0.0,
-        title: Text('Sign In to Speed Meeting'),
+        title: Text('Register to Speed Meeting'),
         actions: <Widget>[
           FlatButton.icon(onPressed: () {
             widget.toggleView();
-          }, icon: Icon(Icons.person), label: Text("Register"))
+          }, icon: Icon(Icons.person), label: Text("Sign In"))
         ],
       ),
       body: Container(
@@ -66,7 +66,7 @@ class _SignInState extends State<SignIn> {
               RaisedButton(
                 color: Colors.red,
                 child: Text(
-                  "Sign In",
+                  "Register",
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
@@ -74,10 +74,10 @@ class _SignInState extends State<SignIn> {
                     setState(() {
                       loading = true;
                     });
-                    dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-                    if (result == null) {
+                    dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                    if(result == null) {
                       setState(() {
-                        error = "Error: Something went wrong. User sign in failed.";
+                        error = "Error: Something went wrong. User registration failed.";
                         loading = false;
                       });
                     }
