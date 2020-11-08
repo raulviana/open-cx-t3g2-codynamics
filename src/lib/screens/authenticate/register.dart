@@ -22,7 +22,8 @@ class _RegisterState extends State<Register> {
   String password = "";
   String error = "";
   String name = "";
-  double padd = 6.0;
+  String socialMedia = "";
+  double padd = 4.0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,7 @@ class _RegisterState extends State<Register> {
           children: [
           Column(
             children: <Widget>[
+              SizedBox(height: 5.0,),
               TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: "Name"),
                 validator: (val) => val.isEmpty ? "Enter your name" : null,
@@ -65,7 +67,7 @@ class _RegisterState extends State<Register> {
                   });
                 },
               ),
-              SizedBox(height: 18.0,),
+              SizedBox(height: 5.0,),
               TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: "Email"),
                 validator: (val) => val.isEmpty ? "Enter an email" : null,
@@ -75,7 +77,7 @@ class _RegisterState extends State<Register> {
                   });
                 },
               ),
-              SizedBox(height: 18.0,),
+              SizedBox(height: 5.0,),
               TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: "Password"),
                 validator: (val) => val.length < 8 ? "Enter a password 8+ characters long" : null,
@@ -86,57 +88,66 @@ class _RegisterState extends State<Register> {
                   });
                 },
               ),
-              SizedBox(height: 18.0),
-
-              Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Text(
-                          "IOT",
-                          style: TextStyle(
-                            fontSize: 10.0,
-                            color: Colors.grey,
-                          )
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Text(
-                          "AI",
-                          style: TextStyle(
-                            fontSize: 10.0,
-                            color: Colors.grey,
-                          )
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(6.0),
-                      child: Text(
-                          "Deep Learning",
-                          style: TextStyle(
-                            fontSize: 10.0,
-                            color: Colors.grey,
-                          )
-                      ),
-                    ),
-                  ]
+              // SizedBox(height: 12.0),
+              // Row(
+              //     children: <Widget>[
+              //       Padding(
+              //         padding: const EdgeInsets.all(6.0),
+              //         child: Text(
+              //             "IOT",
+              //             style: TextStyle(
+              //               fontSize: 10.0,
+              //               color: Colors.grey,
+              //             )
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.all(6.0),
+              //         child: Text(
+              //             "AI",
+              //             style: TextStyle(
+              //               fontSize: 10.0,
+              //               color: Colors.grey,
+              //             )
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.all(6.0),
+              //         child: Text(
+              //             "Deep Learning",
+              //             style: TextStyle(
+              //               fontSize: 10.0,
+              //               color: Colors.grey,
+              //             )
+              //         ),
+              //       ),
+              //     ]
+              // ),
+              // Row(
+              //   children: <Widget>[
+              //   Padding(
+              //     padding: const EdgeInsets.all(6.0),
+              //     child: Text(
+              //         "Operative Systems",
+              //         style: TextStyle(
+              //           fontSize: 10.0,
+              //           color: Colors.grey,
+              //         )
+              //     ),
+              //   ),
+              // ]),
+              //
+              SizedBox(height: 5.0,),
+              TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: "Social Media"),
+                obscureText: true,
+                onChanged: (val) {
+                  setState(() {
+                    socialMedia = val;
+                  });
+                },
               ),
-              Row(
-                children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(6.0),
-                  child: Text(
-                      "Operative Systems",
-                      style: TextStyle(
-                        fontSize: 10.0,
-                        color: Colors.grey,
-                      )
-                  ),
-                ),
-              ]),
-
-
+              SizedBox(height: 10.0,),
               RaisedButton(
                 color: Colors.red,
                 child: Text(
