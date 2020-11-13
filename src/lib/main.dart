@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:english_words/english_words.dart';
 import 'package:provider/provider.dart';
+import 'package:speed_meeting/screens/meeting/meeting.dart';
 import 'package:speed_meeting/screens/wrapper.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
-        home: Wrapper(),
+        home: Meeting(),
       ),
     );
   }
