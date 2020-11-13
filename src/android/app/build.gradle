@@ -51,14 +51,16 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  
+    }
 }
 
 flutter {
     source '../..'
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
+
 
 apply plugin: 'com.google.gms.google-services'
