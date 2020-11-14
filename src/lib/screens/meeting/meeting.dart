@@ -180,9 +180,7 @@ class _MyAppState extends State<Meeting> {
 
   _joinMeeting() async {
     String serverUrl =
-    serverText.text
-        ?.trim()
-        ?.isEmpty ?? "" ? null : serverText.text;
+    serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
     try {
       // Enable or disable any feature flag here
@@ -235,9 +233,7 @@ class _MyAppState extends State<Meeting> {
   static final Map<RoomNameConstraintType, RoomNameConstraint>
   customContraints = {
     RoomNameConstraintType.MAX_LENGTH: new RoomNameConstraint((value) {
-      return value
-          .trim()
-          .length <= 50;
+      return value.trim().length <= 50;
     }, "Maximum room name length should be 30."),
     RoomNameConstraintType.FORBIDDEN_CHARS: new RoomNameConstraint((value) {
       return RegExp(r"[$€£]+", caseSensitive: false, multiLine: false)
@@ -262,3 +258,4 @@ class _MyAppState extends State<Meeting> {
     debugPrint("_onError broadcasted: $error");
   }
 }
+
