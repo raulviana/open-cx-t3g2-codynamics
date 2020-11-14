@@ -21,9 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  jitsi_meet: ^1.0.0
   flutter:
     sdk: flutter
-  jitsi_meet: ^1.0.0
+
 
 
   # The following adds the Cupertino Icons font to your application.
