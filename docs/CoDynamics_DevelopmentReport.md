@@ -255,477 +255,178 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 **Delete Event**
 
 * **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Description**. This use case is needed so the user delete an event he/she previously created.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+ 
 
 
 **Start Event**
 
 * **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Description**. This use case is needed so the user can start an event previously created.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
-
   *OR*
 
-  i. The user presses the button "Sign up" to create his/her profile;
 
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
 
 
 **Join Event**
 
 * **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Description**. This use case is needed so the user can join an event.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+ 
 
 **Leave Event**
 
 * **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Description**. This use case is needed so the user can leaven an event at anytime.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
 
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+ 
 
 
 **Start Meetings Rounds**
 
-* **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Actor**. Event Organizer 
+* **Description**. This use case is needed so the user can start the meetings rounds which are part of an event previously created.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
+  
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
-
-
+ 
 
 
 **Edit Meetings**
 
-* **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Actor**. Event Organizer
+* **Description**. This use case is needed so the user can edit any meetings settings.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
+  
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
-
   *OR*
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
 
 **End Meetings**
 
-* **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Actor**. Event Organizer
+* **Description**. This use case is needed so the user can end any current meetings that are happening in an event.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+  
 
 
 **Add Participant to Meeting**
 
-* **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Actor**. Event Organizer
+* **Description**. This use case is needed so the user can add a participant to a meeting that is already happening.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+  
 
 **Remove Participant from Meeting**
 
-* **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Actor**. Event Organizer
+* **Description**. This use case is needed so the user can a remove a participant from a meeting that is already happening.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
-
-
-
 
 
 
 **Like Meeting**
 
 * **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Description**. This use case is needed so the user can like a meeting he/she participated and save it for subsequent access to its informations.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+  
 
 
 **Leave Meeting**
 
 * **Actor**. Event Organizer/Event Participant 
-* **Description**. This use case is needed so the user can start using the app, both for creating events or attending them. After creating of the profile, the user can edit his/her profile.
-* **Preconditions and Postconditions**. When the the user opens the app, there's a Welcome page that only appears for a short while, and then, the user will see page where he/she can Sign up or Log in. To create his/her profile, the user needs to click on the Sign Up button. After completing the form with his/her information, the user will be added to the database and automatically be logged in. After completing the form with his/her information, the user will be leaded to a page where he/she can either Create or Participate in an Event, Edit Profile or Edit Event.
+* **Description**. This use case is needed so the user can leave any meeting that is already happening.
+* **Preconditions and Postconditions**. 
 
 * **Normal Flow**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects at least 3 tags that represent his/her interests (máx. 10);
-
-  iv. The user confirms his/her register clicking on the "Done" button;
-
-  v. If the informations are in the correct form, the user profile is saved on the database;
-
-  vi. The user is redirected to the Options Menu.
  
 * **Alternative Flows and Exceptions**. 
 
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. The user selects only 2 tags of his/her interests;
-
-  iv. The system will show an error message saying the user needs to select at least 3 tags.
-
-  v. After selecting the 3 tags or more, the message disappears and the user can proceed as normal.
 
   *OR*
-
-  i. The user presses the button "Sign up" to create his/her profile;
-
-  ii. The user fills the form with his/her personal information (Name, E-mail, Social Media profile of preference);
-
-  iii. If the provided E-mail is not in the correct form, the system will show an error message saying that the E-mail is not valid;
-
-  iv. After retyping his/her E-mail int he correct form, the message disappears and the user can proceed as normal.  
+ 
 
 
 
