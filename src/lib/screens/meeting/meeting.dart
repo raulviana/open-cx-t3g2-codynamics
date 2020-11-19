@@ -45,7 +45,9 @@ class _MyAppState extends State<Meeting> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          backgroundColor: Colors.red,
+          elevation: 0.0,
+          title: Text('Start a Speed Meeting - Early Demo')
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(
