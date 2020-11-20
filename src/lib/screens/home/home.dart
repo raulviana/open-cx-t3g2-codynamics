@@ -55,7 +55,7 @@ class Home extends StatelessWidget {
                         foregroundColor: MaterialStateProperty.resolveWith(
                             (states) => Colors.black),
                       ),
-                  onPressed: (){_navigateToCreateEvent(context);},)),
+                  )),
               new ElevatedButton(
                 child: Text(
                   "Participate in an Event",
