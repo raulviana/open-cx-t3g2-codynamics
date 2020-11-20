@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_meeting/screens/home/create_event_page.dart';
 import 'package:speed_meeting/screens/meeting/meeting.dart';
 import 'package:speed_meeting/services/auth.dart';
 
@@ -9,6 +10,11 @@ class Home extends StatelessWidget {
   void _navigateToParticipate(BuildContext context) {
     Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => Meeting()));
+  }
+
+  void _navigateToCreateEvent(BuildContext context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => Create_Event()));
   }
 
   @override
@@ -48,7 +54,8 @@ class Home extends StatelessWidget {
                             (states) => Colors.red),
                         foregroundColor: MaterialStateProperty.resolveWith(
                             (states) => Colors.black),
-                      ))),
+                      ),
+                  onPressed: (){_navigateToCreateEvent(context);},)),
               new ElevatedButton(
                 child: Text(
                   "Participate in an Event",
