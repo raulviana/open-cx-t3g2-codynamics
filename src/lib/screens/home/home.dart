@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:speed_meeting/screens/meeting/meeting.dart';
 import 'package:speed_meeting/services/auth.dart';
 
 class Home extends StatelessWidget {
 
   final AuthService _auth = AuthService();
+
+  void _navigateToParticipate(BuildContext context) {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => Meeting()));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +61,7 @@ class Home extends StatelessWidget {
                   foregroundColor: MaterialStateProperty.resolveWith(
                       (states) => Colors.black),
                 ),
+                onPressed:(){_navigateToParticipate(context);},
               ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
