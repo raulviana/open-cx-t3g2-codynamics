@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:speed_meeting/models/user.dart';
-import 'package:speed_meeting/services/auth.dart';
 import 'package:speed_meeting/services/database.dart';
 import 'package:speed_meeting/shared/constants.dart';
 import 'package:provider/provider.dart';
@@ -19,14 +18,13 @@ class EditProfile extends StatefulWidget {
 
 class _EditState extends State<EditProfile> {
 
-  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
 
-  String email = "";
-  String name = "";
-  String socialNetwork = "";
-  List<String> interests = [];
+  String email;
+  String name;
+  String socialNetwork;
+  List<String> interests;
   String error = "";
 
   @override
@@ -45,7 +43,6 @@ class _EditState extends State<EditProfile> {
         child: StreamBuilder<UserData>(
           stream: DatabaseService(uid: user.uid).userData,
           builder: (context, snapshot) {
-            print(snapshot);
             if(snapshot.hasData) {
 
               UserData userData = snapshot.data;
@@ -85,21 +82,13 @@ class _EditState extends State<EditProfile> {
                       ),
                       onPressed: () async {
                         if(_formKey.currentState.validate()) {
-                          setState(() {
-                            loading = true;
-                          });
-                          dynamic result = await DatabaseService(uid: user.uid).updateUserData(
+                          await DatabaseService(uid: user.uid).updateUserData(
                               name ?? userData.name,
                               email ?? userData.email,
                               socialNetwork ?? userData.socialNetwork,
                               interests ?? userData.interests
                           );
-                          if(result == null) {
-                            setState(() {
-                              error = "Error: Something went wrong. User update failed.";
-                              loading = false;
-                            });
-                          }
+                          Navigator.pop(context);
                         }
                       },
                     ),

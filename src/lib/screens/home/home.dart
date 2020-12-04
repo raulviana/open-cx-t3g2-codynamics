@@ -90,6 +90,9 @@ class Home extends StatelessWidget {
                               (states) => Colors.red),
                           foregroundColor: MaterialStateProperty.resolveWith(
                               (states) => Colors.black)),
+                      onPressed:(){
+                        Navigator.pushNamed(context, '/EditEvent');
+                      },
                     )
                   ])
             ],
