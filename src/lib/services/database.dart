@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:speed_meeting/models/user.dart';
 
 class DatabaseService {
 
@@ -15,6 +16,22 @@ class DatabaseService {
       'socialNetwork': socialNetwork,
       'interests': interests,
     });
+  }
+
+  // user data from snapshot
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      name: snapshot.data()['name'],
+      email: snapshot.data()['email'],
+      socialNetwork: snapshot.data()['socialNetwork']
+      //interests: snapshot.data()['interests']
+    );
+  }
+
+  // get user doc stream
+  Stream<UserData> get userData {
+    return usersCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 
 }
