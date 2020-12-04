@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:english_words/english_words.dart';
 import 'package:provider/provider.dart';
-import 'package:speed_meeting/screens/home/home.dart';
+import 'package:speed_meeting/screens/home/create_event_page.dart';
 import 'package:speed_meeting/screens/meeting/meeting.dart';
 import 'package:speed_meeting/screens/wrapper.dart';
 
@@ -23,7 +22,11 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
-        home: Home(),
+        home: Wrapper(),
+        routes: <String, WidgetBuilder> {
+          '/CreateEvent' : (context) => Create_Event(),
+          '/ParticipateEvent' : (context) => Meeting(),
+        },
       ),
     );
   }
