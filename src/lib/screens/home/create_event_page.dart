@@ -42,15 +42,15 @@ class Create_Event extends StatelessWidget {
                     style: TextStyle(fontSize: 20),
                   )),       //Event Name
               Padding(
-                  padding : EdgeInsets.only(left : 50,right: 50),
-                  child : TextField(
+                padding : EdgeInsets.only(left : 50,right: 50),
+                child : TextField(
                     decoration: InputDecoration(
-                        fillColor: Colors.grey,
-                        filled: true,
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
-                        hintText: 'Enter the Event Name'
-                    ),
-                  )),       //Event Name Input
+                      fillColor: Colors.grey,
+                      filled: true,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
+                      hintText: 'Enter the Event Name'
+                ),
+              )),       //Event Name Input
               Text(
                 "Date",
                 textAlign: TextAlign.center,
@@ -84,11 +84,11 @@ class Create_Event extends StatelessWidget {
                     ),
                   )),
               Text(
-                "Meetings",
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.ltr,
-                style: TextStyle(fontSize: 30),
-              ),
+                  "Meetings",
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.ltr,
+                  style: TextStyle(fontSize: 30),
+                ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
@@ -112,29 +112,29 @@ class Create_Event extends StatelessWidget {
                       width: 50,
                       height: 20,
                       child: Padding(
-                          padding : EdgeInsets.only(left : 0,right: 0),
-                          child : TextField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              border: OutlineInputBorder(borderSide: BorderSide.none),
-                            ),
-                          )),),
+                        padding : EdgeInsets.only(left : 0,right: 0),
+                        child : TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            fillColor: Colors.grey,
+                            filled: true,
+                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                          ),
+                        )),),
 
                     SizedBox(
                       width: 50,
                       height: 20,
                       child: Padding(
-                          padding : EdgeInsets.only(left : 0,right: 0),
-                          child : TextField(
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              border: OutlineInputBorder(borderSide: BorderSide.none),
-                            ),
-                          )),),
+                        padding : EdgeInsets.only(left : 0,right: 0),
+                        child : TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            fillColor: Colors.grey,
+                            filled: true,
+                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                          ),
+                        )),),
                   ]),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -188,20 +188,20 @@ class Create_Event extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 100,
-                      height: 20,
-                      child: Padding(
-                          padding : EdgeInsets.only(left : 0,right: 0),
-                          child : TextField(
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              border: OutlineInputBorder(borderSide: BorderSide.none),
-                            ),
-                          )),)]
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  SizedBox(
+                    width: 100,
+                    height: 20,
+                    child: Padding(
+                        padding : EdgeInsets.only(left : 0,right: 0),
+                        child : TextField(
+                          decoration: InputDecoration(
+                            fillColor: Colors.grey,
+                            filled: true,
+                            border: OutlineInputBorder(borderSide: BorderSide.none),
+                          ),
+                        )),)]
               ),
             ],
           ),
