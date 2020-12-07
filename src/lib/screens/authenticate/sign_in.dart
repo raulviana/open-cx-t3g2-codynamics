@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speed_meeting/locator.dart';
 import 'package:speed_meeting/services/auth.dart';
 import 'package:speed_meeting/shared/constants.dart';
 import 'package:speed_meeting/shared/loading.dart';
@@ -14,7 +15,8 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
 
-  final AuthService _auth = AuthService();
+  final AuthService _auth = locator<AuthService>();
+  
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
 

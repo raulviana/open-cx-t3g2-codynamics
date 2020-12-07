@@ -256,32 +256,13 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 
 * **Actor**. Event Organizer/Event Participant 
 * **Description**. This use case is needed so the user delete an event he/she previously created.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
-
- 
 
 
 **Start Event**
 
 * **Actor**. Event Organizer/Event Participant 
 * **Description**. This use case is needed so the user can start an event previously created.
-* **Preconditions and Postconditions**. 
-
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-  *OR*
-
 
 
 
@@ -289,79 +270,33 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 
 * **Actor**. Event Organizer/Event Participant 
 * **Description**. This use case is needed so the user can join an event.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
- 
 
 **Leave Event**
 
 * **Actor**. Event Organizer/Event Participant 
 * **Description**. This use case is needed so the user can leaven an event at anytime.
-* **Preconditions and Postconditions**. 
-
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-
-  *OR*
- 
 
 
 **Start Meetings Rounds**
 
 * **Actor**. Event Organizer 
 * **Description**. This use case is needed so the user can start the meetings rounds which are part of an event previously created.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
-  
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
- 
 
 
 **Edit Meetings**
 
 * **Actor**. Event Organizer
 * **Description**. This use case is needed so the user can edit any meetings settings.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
-  
- 
-* **Alternative Flows and Exceptions**. 
-
-  *OR*
 
 
 **End Meetings**
 
 * **Actor**. Event Organizer
 * **Description**. This use case is needed so the user can end any current meetings that are happening in an event.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
   
 
 
@@ -369,15 +304,7 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 
 * **Actor**. Event Organizer
 * **Description**. This use case is needed so the user can add a participant to a meeting that is already happening.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
 
   
 
@@ -385,15 +312,7 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 
 * **Actor**. Event Organizer
 * **Description**. This use case is needed so the user can a remove a participant from a meeting that is already happening.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
 
 
 
@@ -401,15 +320,7 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 
 * **Actor**. Event Organizer/Event Participant 
 * **Description**. This use case is needed so the user can like a meeting he/she participated and save it for subsequent access to its informations.
-* **Preconditions and Postconditions**. 
 
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
   
 
 
@@ -417,20 +328,11 @@ SpeedMeeting is a mobile app that makes the experience of networking and of atte
 
 * **Actor**. Event Organizer/Event Participant 
 * **Description**. This use case is needed so the user can leave any meeting that is already happening.
-* **Preconditions and Postconditions**. 
-
-* **Normal Flow**. 
-
- 
-* **Alternative Flows and Exceptions**. 
-
-
-  *OR*
- 
 
 
 
 <br>
+
 ### User stories
 This section will contain the requirements of the product described as **user stories**, organized in a global **[user story map](https://plan.io/blog/user-story-mapping/)** with **user roles** or **themes**.
 
@@ -439,6 +341,23 @@ For each theme, or role, you may add a small description. User stories should be
 A user story is a description of desired functionality told from the perspective of the user or customer. A starting template for the description of a user story is 
 
 *As a < user role >, I want < goal > so that < reason >.*
+
+*As a **participant**, I want to **create a profile** that includes my interests to be paired with others with the same/close interests.*
+
+*As a **participant**, I want to **add my social networks** so other participants that will be paired with me can know a little more about me.*
+
+As a **participant**, I want to be able to **pair with other participants** which have the same interests as mine.*
+
+*As an **organizer**, I want to **have control over the settings** of my event with a simple interface.*
+
+*As an **organizer**, I want to be able to **set the specific criteria for the speed meetings**, such as length of time, amount of people or number of group rotations.*
+
+*As an **organizer**, I want to **have control over the roles of the participants** in my event, each with different permissions.*
+
+*As an **organizer**, I want to give the option for the participants to keep in contact with each other so that they keep the discussion going alive(About a research or opportunity mentioned in the event, for example).*
+
+*As an **organizer**, I want the participants to also a**ctively interact with one another**, during and after the event.*
+
 
 
 **INVEST in good user stories**. 

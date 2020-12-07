@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:speed_meeting/locator.dart';
 import 'package:speed_meeting/services/auth.dart';
 
 class Home extends StatelessWidget {
 
-  final AuthService _auth = AuthService();
+  final AuthService _auth = locator<AuthService>();
 
   @override
   Widget build(BuildContext context) {

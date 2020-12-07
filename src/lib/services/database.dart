@@ -2,36 +2,33 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:speed_meeting/models/user.dart';
 
 class DatabaseService {
-
-  final String uid;
-  DatabaseService({this.uid});
-
   // collection reference
-  final CollectionReference usersCollection = FirebaseFirestore.instance.collection("users");
+  final CollectionReference _usersCollection =
+      FirebaseFirestore.instance.collection("users");
 
-  Future updateUserData(String name, String email, String socialNetwork, List<String> interests) async {
-    return await usersCollection.doc(uid).set({
-      'name': name,
-      'email': email,
-      'socialNetwork': socialNetwork,
-      'interests': interests,
+  Future updateUserData(UserData userData) async {
+    //String name, String email, String socialNetwork, List<String> interests
+    return await _usersCollection.doc(userData.uid).set({
+      'name': userData.name,
+      'email': userData.email,
+      'socialNetwork': userData.socialNetwork,
+      'interests': userData.interests,
     });
   }
 
   // user data from snapshot
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
-      uid: uid,
-      name: snapshot.data()['name'],
-      email: snapshot.data()['email'],
-      socialNetwork: snapshot.data()['socialNetwork']
-      //interests: snapshot.data()['interests']
-    );
+        uid: snapshot.data()['uid'],
+        name: snapshot.data()['name'],
+        email: snapshot.data()['email'],
+        socialNetwork: snapshot.data()['socialNetwork']
+        //interests: snapshot.data()['interests']
+        );
   }
 
   // get user doc stream
-  Stream<UserData> get userData {
-    return usersCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
+  Stream<UserData> userData(String uid) {
+    return _usersCollection.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
-
 }

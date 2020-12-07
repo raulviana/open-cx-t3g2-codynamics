@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag_enum.dart';
@@ -9,6 +8,7 @@ import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
 import 'package:provider/provider.dart';
+import 'package:speed_meeting/providers/user_provider.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -43,15 +43,16 @@ class _MyAppState extends State<Meeting> {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<User>(context);
+    final user = Provider.of<UserProvider>(context).user;
+    
     emailText.text = user.email;
-    nameText.text = user.displayName?.isEmpty == true ? user.email : user.displayName;
+    nameText.text = user.name?.isEmpty == true ? user.email : user.name;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
             backgroundColor: Colors.red,
             elevation: 0.0,
-            title: Text('Join Speed Meeting')),
+            title: Text('Join SpeedMeeting')),
         body: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
@@ -93,6 +94,7 @@ class _MyAppState extends State<Meeting> {
                   height: 16.0,
                 ),
                 TextField(
+                  key: Key("NameKey"),
                   controller: nameText,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
