@@ -1,7 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
-import 'package:speed_meeting/services/auth.dart';
-import 'package:speed_meeting/services/database.dart';
+import 'package:speed_meeting/services/auth_service.dart';
+import 'package:speed_meeting/services/database_service.dart';
 import 'package:speed_meeting/services/user_service.dart';
 
 //IOC container : functions like an app layer
@@ -15,7 +15,7 @@ Future<void> setUpLocator() async {
   //every time we call the locator, it will give this DataBaseService that was created only once
   locator.registerSingleton(UserProvider());
   locator.registerSingleton(DatabaseService());
-  locator.registerSingleton(UserService());
   locator.registerSingleton(AuthService());
+  locator.registerSingleton(UserService());
   return;
 }

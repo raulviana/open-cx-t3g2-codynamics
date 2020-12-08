@@ -1,23 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:speed_meeting/locator.dart';
+import 'package:speed_meeting/models/auth_info.dart';
 import 'package:speed_meeting/models/user.dart';
 import 'package:speed_meeting/services/user_service.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final UserService _userService = locator<UserService>();
 
   Stream<User> get user {
     return _auth.authStateChanges();
   }
 
   //Sign In Anon
-  Future signInAnon() async {
+  Future<UserData> signInAnon() async {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User user = result.user;
-      _updateUser(user, false);
-      return user;
+      return _mapToUserData(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -25,14 +24,13 @@ class AuthService {
   }
 
   //Sign In Email/Password
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future<UserData> signInWithEmailAndPassword(AuthInfo authInfo) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+          email: authInfo.email, password: authInfo.password);
       User user = result.user;
-      _updateUser(user, false);
 
-      return user;
+      return _mapToUserData(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -40,36 +38,32 @@ class AuthService {
   }
 
   //Register Email/Password
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future<UserData> registerWithEmailAndPassword(AuthInfo authInfo) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+          email: authInfo.email, password: authInfo.password);
       User user = result.user;
-      _updateUser(user, true);
 
-      return user;
+      return _mapToUserData(user);
     } catch (e) {
       print(e.toString());
       return null;
     }
   }
 
-  void _updateUser(User user, bool isNewUser) {
-    UserData userData = UserData(
+  UserData _mapToUserData(User user) {
+    return UserData(
         uid: user.uid,
         name: user.displayName,
         email: user.email,
         socialNetwork: "",
         interests: []);
-
-    _userService.updateUser(userData, isNewUser);
   }
 
   //Sign Out
   Future signOut() async {
     try {
       await _auth.signOut();
-      _userService.clearUser();
 
       return null;
     } catch (e) {

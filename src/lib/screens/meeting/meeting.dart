@@ -46,7 +46,7 @@ class _MyAppState extends State<Meeting> {
     final user = Provider.of<UserProvider>(context).user;
     
     emailText.text = user.email;
-    nameText.text = user.name?.isEmpty == true ? user.email : user.name;
+    nameText.text = user.name?.isNotEmpty == true ? user.name : user.email;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
