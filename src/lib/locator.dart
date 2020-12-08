@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
 import 'package:speed_meeting/services/auth.dart';
 import 'package:speed_meeting/services/database.dart';
+import 'package:speed_meeting/services/user_service.dart';
 
 //IOC container : functions like an app layer
 //It is a sort of dictionary where:
@@ -11,9 +12,10 @@ GetIt locator = GetIt.instance;
 
 Future<void> setUpLocator() async {
   //add all dependencies needed in the app, ONLY ONCE!!!!!
-  //everytime we call the locator, it will give this DataBaseService that was created only once
+  //every time we call the locator, it will give this DataBaseService that was created only once
   locator.registerSingleton(UserProvider());
   locator.registerSingleton(DatabaseService());
+  locator.registerSingleton(UserService());
   locator.registerSingleton(AuthService());
   return;
 }
