@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:speed_meeting/services/auth.dart';
+import 'package:speed_meeting/locator.dart';
+import 'package:speed_meeting/services/auth_service.dart';
+import 'package:speed_meeting/services/user_service.dart';
 
 // ignore: camel_case_types
 class Create_Event extends StatelessWidget {
 
-  final AuthService _auth = AuthService();
+  final UserService _userService = locator<UserService>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class Create_Event extends StatelessWidget {
             icon: Icon(Icons.person),
             label: Text("Logout"),
             onPressed: () async {
-              await _auth.signOut();
+              await _userService.signOut();
             },
           ),
         ],

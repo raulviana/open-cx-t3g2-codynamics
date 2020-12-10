@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -8,6 +7,8 @@ import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
+import 'package:provider/provider.dart';
+import 'package:speed_meeting/providers/user_provider.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -18,8 +19,8 @@ class _MyAppState extends State<Meeting> {
   final serverText = TextEditingController();
   final roomText = TextEditingController(text: "plugintestroom");
   final subjectText = TextEditingController(text: "My Plugin Test Meeting");
-  final nameText = TextEditingController(text: "Plugin Test User");
-  final emailText = TextEditingController(text: "fake@email.com");
+  final nameText = TextEditingController();
+  final emailText = TextEditingController();
   var isAudioOnly = true;
   var isAudioMuted = true;
   var isVideoMuted = true;
@@ -42,13 +43,16 @@ class _MyAppState extends State<Meeting> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
+    
+    emailText.text = user.email;
+    nameText.text = user.name?.isNotEmpty == true ? user.name : user.email;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
-          elevation: 0.0,
-          title: Text('Start a Speed Meeting - Early Demo')
-        ),
+            backgroundColor: Colors.red,
+            elevation: 0.0,
+            title: Text('Join SpeedMeeting')),
         body: Container(
           padding: const EdgeInsets.symmetric(
             horizontal: 16.0,
@@ -90,6 +94,7 @@ class _MyAppState extends State<Meeting> {
                   height: 16.0,
                 ),
                 TextField(
+                  key: Key("NameKey"),
                   controller: nameText,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -182,7 +187,7 @@ class _MyAppState extends State<Meeting> {
 
   _joinMeeting() async {
     String serverUrl =
-    serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
+        serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
     try {
       // Enable or disable any feature flag here
@@ -233,13 +238,13 @@ class _MyAppState extends State<Meeting> {
   }
 
   static final Map<RoomNameConstraintType, RoomNameConstraint>
-  customContraints = {
+      customContraints = {
     RoomNameConstraintType.MAX_LENGTH: new RoomNameConstraint((value) {
       return value.trim().length <= 50;
     }, "Maximum room name length should be 30."),
     RoomNameConstraintType.FORBIDDEN_CHARS: new RoomNameConstraint((value) {
       return RegExp(r"[$€£]+", caseSensitive: false, multiLine: false)
-          .hasMatch(value) ==
+              .hasMatch(value) ==
           false;
     }, "Currencies characters aren't allowed in room names."),
   };
@@ -260,4 +265,3 @@ class _MyAppState extends State<Meeting> {
     debugPrint("_onError broadcasted: $error");
   }
 }
-
