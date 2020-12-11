@@ -44,7 +44,7 @@ class _MyAppState extends State<Meeting> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
-    
+
     emailText.text = user.email;
     nameText.text = user.name?.isNotEmpty == true ? user.name : user.email;
     return MaterialApp(
@@ -147,7 +147,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _joinMeeting();
+                      _waitMeeting();
                     },
                     child: Text(
                       "Join Meeting",
@@ -183,6 +183,11 @@ class _MyAppState extends State<Meeting> {
     setState(() {
       isVideoMuted = value;
     });
+  }
+
+  _waitMeeting() async {
+    debugPrint("Waiting...");
+    //_joinMeeting();
   }
 
   _joinMeeting() async {
