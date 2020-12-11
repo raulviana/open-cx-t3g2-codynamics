@@ -427,30 +427,20 @@ A good practice is to simplify this, avoiding repetitions, and automating the te
 ---
 ## Configuration and change management
 
-Configuration and change management are key activities to control change to, and maintain the integrity of, a project’s artifacts (code, models, documents).
+For this ESOF project, we used a very simple approach. We managed feature requests, bug fixes, and improvements, using GitHub Flow.
 
-For the purpose of ESOF, we will use a very simple approach, just to manage feature requests, bug fixes, and improvements, using GitHub issues and following the [GitHub flow](https://guides.github.com/introduction/flow/).
-
+- Creation of **branches** for every new feature/user story, using easy-to-understand names
+- Requesting **pull requests** when a certain branch was ready to be added to the master branch
+- Generating releases for each product iteration
+All pull requests were revised, discussed and tested of in order to make sure that the pretended functionality was achieved, with no errors.
+In that way, master was açways ready to be tested by the client with the features developed until that particular moment. 
 
 ---
 
 ## Project management
+The project management is done using GitHub Project with the following structure:
 
-Software project management is an art and science of planning and leading software projects, in which software projects are planned, implemented, monitored and controlled.
-
-In the context of ESOF, we expect that each team adopts a project management tool capable of registering tasks, assign tasks to people, add estimations to tasks, monitor tasks progress, and therefore being able to track their projects.
-
-Example of tools to do this are:
-  * [Trello.com](https://trello.com)
-  * [Github Projects](https://github.com/features/project-management/com)
-  * [Pivotal Tracker](https://www.pivotaltracker.com)
-  * [Jira](https://www.atlassian.com/software/jira)
-
-We recommend to use the simplest tool that can possibly work for the team.
-
-
----
-
-## Evolution - contributions to open-cx
-
-Describe your contribution to open-cx (iteration 5), linking to the appropriate pull requests, issues, documentation.
+User Stories: User stories/features planned to be integrated in the project.
+To Do: backend features and other tasks not considered user stories to be done.
+In Progress: User stories that are currently being worked on.
+Done: User stories/tasks that have already been done and successfully tested.
