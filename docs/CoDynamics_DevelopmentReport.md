@@ -431,7 +431,7 @@ For this ESOF project, we used a very simple approach. We managed feature reques
 
 - Creation of **branches** for every new feature/user story, using easy-to-understand names
 - Requesting **pull requests** when a certain branch was ready to be added to the master branch
-- Generating releases for each product iteration
+- Generating **releases** for each product iteration
 All pull requests were revised, discussed and tested of in order to make sure that the pretended functionality was achieved, with no errors.
 In that way, master was açways ready to be tested by the client with the features developed until that particular moment. 
 
@@ -440,7 +440,7 @@ In that way, master was açways ready to be tested by the client with the featur
 ## Project management
 The project management is done using GitHub Project with the following structure:
 
-User Stories: User stories/features planned to be integrated in the project.
-To Do: backend features and other tasks not considered user stories to be done.
-In Progress: User stories that are currently being worked on.
-Done: User stories/tasks that have already been done and successfully tested.
+- **User Stories**: User stories/features planned to be integrated in the project.
+- **To Do**: backend features and other tasks not considered user stories to be done.
+- **In Progress**: User stories that are currently being worked on.
+- **Done**: User stories/tasks that have already been done and successfully tested.
