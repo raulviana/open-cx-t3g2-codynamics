@@ -374,7 +374,9 @@ At the end, it is good to add a rough indication of the value of the user story 
 
 ### Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+![domain model](https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/domain_model.jpg)
+<br>
+This simple UML class diagram illustrates all key concepts and relationships involved in the problem domain addressed by our project. 
 
 ---
 
