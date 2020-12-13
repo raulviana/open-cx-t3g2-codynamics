@@ -407,11 +407,20 @@ In this subsection please describe in more detail which, and how, user(s) story(
 ---
 
 ## Implementation
-Regular product increments are a good practice of product management. 
+In the initial prototype phase, we started to skech the app in mock ups. This mock ups helped us to make a picture of the app usage flow and the screens we will need.
 
-While not necessary, sometimes it might be useful to explain a few aspects of the code that have the greatest potential to confuse software engineers about how it works. Since the code should speak by itself, try to keep this section as short and simple as possible.
+<img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/welcomePage.png" width="200" heigth="300">
+Home Screen
+<br>
+<img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/loginSignUpPage.png" width="200" heigth="300">
+SignIn Page
+<br>
+<img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/createEventPage.png" width="200" heigth="300">
+Create Event Page
 
-Use cross-links to the code repository and only embed real fragments of code when strictly needed, since they tend to become outdated very soon.
+We discussed about the best programming aproach. In order to develop fast and easily to both Android and IOS platforms, and also to facilitate the eventual open-cx integration, we decided that the best option available was Flutter/Dart.
+
+We opted with Firebase initially because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
 
 ---
 ## Test
