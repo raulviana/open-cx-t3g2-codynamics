@@ -381,15 +381,12 @@ This simple UML class diagram illustrates all key concepts and relationships inv
 ---
 
 ## Architecture and Design
-The architecture of a software system encompasses the set of key decisions about its overall organization. 
 
-A well written architecture document is brief but reduces the amount of time it takes new programmers to a project to understand the code to feel able to make modifications and enhancements.
-
-To document the architecture requires describing the decomposition of the system in their parts (high-level components) and the key behaviors and collaborations between them. 
-
-In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
+
+# to-do
+
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
 It can be beneficial to present the system both in a horizontal or vertical decomposition:
@@ -414,7 +411,30 @@ Create Event Page
 
 We discussed about the best programming aproach. In order to develop fast and easily to both Android and IOS platforms, and also to facilitate the eventual open-cx integration, we decided that the best option available was Flutter/Dart.
 
-We opted with Firebase initially because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
+We also opted with Firebase for the data persistency in an early stage because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
+
+#### First Iteration
+In this iteration, we dedicated some time to learning about Flutter architecture and Dart syntax. We also spent some time implementing the first user stories. We chose the user stories based on the easiness and priority.
+
+We implemented the first screens
+- SignIn
+- Register
+- Create Event
+
+[First Release - v0.1](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.1)
+
+#### Second Iteration
+In this iteration, we selected the user stories with different prioritization criteria. Instead of picking the easiest and faster to implement, we chose those that seemed to have more value to the user. We tried to start showing the client what our app could do.
+We implemented the 
+- Join Meeting
+
+#### Third Iteration
+In this iteration, we tried to start to put it all together. We integrated the firebase and connected it to the app to achieve data persistency. We made all of the screens connected. The release starts to have the using feeling of the final product.
+
+#### Fourth Iteration
+In this iteration, we tried to implement the unit and acceptance tests. After some struggle with the acceptance tests, we concluded that our design was wrong and it couldn't be possible. We had to refactor all the code so we could make dependency injection throughout the different screens.
+After that, we could implement acceptance tests in two simple scenarios and unit tests in some key code fragments. 
+
 
 ---
 
