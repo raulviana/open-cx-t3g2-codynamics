@@ -399,14 +399,8 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 ### Physical architecture
 ![Physical Architecture](https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/vertical_protocol.jpg.jpg)
 
+
 ### Prototype
-To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
-
-In this subsection please describe in more detail which, and how, user(s) story(ies) were implemented.
-
----
-
-## Implementation
 In the initial prototype phase, we started to skech the app in mock ups. This mock ups helped us to make a picture of the app usage flow and the screens we will need.
 
 <img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/welcomePage.png" width="200" heigth="300">
@@ -421,6 +415,24 @@ Create Event Page
 We discussed about the best programming aproach. In order to develop fast and easily to both Android and IOS platforms, and also to facilitate the eventual open-cx integration, we decided that the best option available was Flutter/Dart.
 
 We opted with Firebase initially because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
+
+---
+
+## Implementation
+
+This section describes each product iteration alongside with the user stories associated with them.
+
+In addition to the description of each product iteration, we are going to leave links to the issues representing the user stories associated with each iteration. Also, we created release tags to our GitHub repository for every sprint to maintain a projects running sample at that specific moment, that contains the features already developed and considered done.
+This way also allows for easier access to the status of the project by the end of each iteration.
+
+### First Iteraction
+
+On the first iteration, we started to dedicate some time to discuss the most prominent differences between online and non-online events. We concluded that we could try to develop an application that would mimic the interactions taken on a non-online event coffee-break in an online one.
+
+We concluded that the Flutter/Dart framework and language would be the better development option because it allows developing to Android and IOS at the same time, and it would make a possible integration with the ***open-cx*** project also easier. 
+
+
+
 
 ---
 ## Test
