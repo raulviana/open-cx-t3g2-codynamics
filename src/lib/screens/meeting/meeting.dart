@@ -9,6 +9,7 @@ import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
 import 'package:provider/provider.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
+import 'package:speed_meeting/services/database_service.dart';
 
 class Meeting extends StatefulWidget {
   @override

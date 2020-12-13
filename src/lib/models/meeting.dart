@@ -3,7 +3,8 @@ class MeetingData {
   final String name;
   final int duration;
   final DateTime start;
-  final List<String> users;
+  Map<String, String> users;
+  List<String> leaders;
 
-  MeetingData({this.uid, this.duration, this.name, this.start, this.users});
+  MeetingData({this.uid, this.duration, this.name, this.start, this.users, this.leaders});
 }
