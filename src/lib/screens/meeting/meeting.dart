@@ -186,11 +186,15 @@ class _MyAppState extends State<Meeting> {
   }
 
   _waitMeeting() async {
-    debugPrint("Waiting...");
-    //_joinMeeting();
+    // Entrar na lista de espera
+    debugPrint("Waiting for " + roomText.text + "...");
+    // wait for ready == true
+    String roomId = "1";
+    debugPrint("Your room is" + roomId);
+    _joinMeeting(roomText.text + "-" + roomId);
   }
 
-  _joinMeeting() async {
+  _joinMeeting(String roomToConnect) async {
     String serverUrl =
         serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
@@ -213,7 +217,7 @@ class _MyAppState extends State<Meeting> {
 
       // Define meetings options here
       var options = JitsiMeetingOptions()
-        ..room = roomText.text
+        ..room = roomToConnect
         ..serverURL = serverUrl
         ..subject = subjectText.text
         ..userDisplayName = nameText.text
