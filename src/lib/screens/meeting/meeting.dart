@@ -10,6 +10,7 @@ import 'package:jitsi_meet/room_name_constraint_type.dart';
 import 'package:provider/provider.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
 import 'package:speed_meeting/services/database_service.dart';
+import 'package:speed_meeting/services/meeting_service.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -188,9 +189,16 @@ class _MyAppState extends State<Meeting> {
 
   _waitMeeting() async {
     // Entrar na lista de espera
-    debugPrint("Waiting for " + roomText.text + "...");
+    MeetingService ms = new MeetingService();
+    ms.enterMeeting("user1", roomText.text);
+    ms.assignRooms(roomText.text);
+
     // wait for ready == true
-    String roomId = "1";
+    String roomId;
+    do {
+      roomId = ms.getRoom("user1", roomText.text);
+    } while (roomId != "");
+
     debugPrint("Your room is" + roomId);
     _joinMeeting(roomText.text + "-" + roomId);
   }
