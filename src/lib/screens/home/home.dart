@@ -12,7 +12,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text('Speed Meeting'),
+        title: Text('Speed Meeting',key: const Key("confirm"),),
         elevation: 0.0,
         actions: <Widget>[
           FlatButton.icon(
