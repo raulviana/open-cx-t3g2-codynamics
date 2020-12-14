@@ -1,12 +1,8 @@
 import 'package:speed_meeting/locator.dart';
 import 'package:speed_meeting/models/meeting.dart';
-import 'package:speed_meeting/providers/meeting_provider.dart';
 import 'package:speed_meeting/services/database_service.dart';
 
 class MeetingService {
-  //meetingprovider - dependency injection - using ioc containers to inject provider into this class
-  final MeetingProvider _meetingProvider = locator<MeetingProvider>();
-
   //database service - dependency injection - using ioc containers to inject service into this class
   final DatabaseService _databaseService = locator<DatabaseService>();
 
