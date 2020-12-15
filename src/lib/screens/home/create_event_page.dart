@@ -3,6 +3,8 @@ import 'package:speed_meeting/locator.dart';
 import 'package:speed_meeting/services/auth_service.dart';
 import 'package:speed_meeting/services/user_service.dart';
 import '../../models/event.dart';
+import '../../utils/utils.dart';
+
 
 // ignore: camel_case_types
 class Create_Event extends StatelessWidget {
@@ -13,6 +15,10 @@ class Create_Event extends StatelessWidget {
   void CreateEvent(){
     //EventData({this.name, this.hour, this.date, this.duration, this.rounds, this.p_a, this.p_b, this.ratio});
     event = new EventData(_event_name,_event_hour,_event_date,_event_dur,_event_rounds,_event_a,_event_b,_event_ratio);
+  }
+
+  String Validate(){
+    return "message";
   }
 
 
@@ -42,7 +48,7 @@ class Create_Event extends StatelessWidget {
         ),
         padding: new EdgeInsets.only(top: 100.0),
         child: new Center(
-          child: new Column(
+          child: new ListView(
             children: <Widget>[
               Padding(
                   padding: EdgeInsets.only(top: 10),
@@ -75,7 +81,7 @@ class Create_Event extends StatelessWidget {
               ),          // Date
               Padding(
                   padding : EdgeInsets.only(left : 50,right: 50),
-                  child : TextField(
+                  child : TextFormField(
                     decoration: InputDecoration(
                         fillColor: Colors.grey,
                         filled: true,
@@ -83,8 +89,9 @@ class Create_Event extends StatelessWidget {
                         hintText: 'Enter Date(MM-DD-YY)'
                     ),
                     onChanged: (val) {
-                      _event_date=val;print(_event_date);
+                      _event_date=val;print(_event_date);print(matchDate(val));
                     },
+
                   ),
 
               ),       //Date input
