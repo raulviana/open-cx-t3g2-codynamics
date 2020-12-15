@@ -1,4 +1,4 @@
-Feature: Counter
+Feature: Login
   The user should be able to login
 
   Scenario: User logs in if given correct info

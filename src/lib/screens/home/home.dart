@@ -21,6 +21,7 @@ class Home extends StatelessWidget {
             onPressed: () async {
               await _userService.signOut();
             },
+            key: const Key("logout"),
           ),
         ],
       ),
