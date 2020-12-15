@@ -2,12 +2,12 @@ import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 
-StepDefinitionGeneric enter_login() {
-  return given<String, FlutterWorld>(
+StepDefinitionGeneric is_logged() {
+  return given1<String, FlutterWorld>(
     'Given I am {string} in',
         (key, context) async {
-      final locator = find.byValueKey(key);
-      await FlutterDriverUtils.tap(context.world.driver, locator);
+      final locator = find.byValueKey("logout");
+      await FlutterDriverUtils.isPresent(context.world.driver,locator);
     },
   );
 }
