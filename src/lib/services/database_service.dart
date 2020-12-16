@@ -24,6 +24,7 @@ class DatabaseService {
     return await _meetingsCollection.doc(meetingData.uid).set({
       'name': meetingData.name,
       'duration': meetingData.duration,
+      'owner' : meetingData.owner,
       'start': meetingData.start,
       'users': meetingData.users,
       'leaders': meetingData.leaders,

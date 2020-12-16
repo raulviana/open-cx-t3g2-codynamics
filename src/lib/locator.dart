@@ -4,6 +4,8 @@ import 'package:speed_meeting/services/auth_service.dart';
 import 'package:speed_meeting/services/database_service.dart';
 import 'package:speed_meeting/services/user_service.dart';
 
+import 'services/meeting_service.dart';
+
 //IOC container : functions like an app layer
 //It is a sort of dictionary where:
 //key is the type of object,
@@ -17,5 +19,6 @@ Future<void> setUpLocator() async {
   locator.registerSingleton(DatabaseService());
   locator.registerSingleton(AuthService());
   locator.registerSingleton(UserService());
+  locator.registerSingleton(MeetingService());
   return;
 }
