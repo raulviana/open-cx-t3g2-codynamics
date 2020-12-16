@@ -40,7 +40,7 @@ class _SignInState extends State<SignIn> {
                       widget.toggleView();
                     },
                     icon: Icon(Icons.person),
-                    label: Text("Register"))
+                    label: Text("Register",key: const Key("register"),))
               ],
             ),
             body: Container(
@@ -59,6 +59,7 @@ class _SignInState extends State<SignIn> {
                           email = val;
                         });
                       },
+                      key: const Key("email"),
                     ),
                     SizedBox(
                       height: 20.0,
@@ -75,6 +76,7 @@ class _SignInState extends State<SignIn> {
                           password = val;
                         });
                       },
+                      key: const Key("password"),
                     ),
                     SizedBox(height: 20.0),
                     RaisedButton(
@@ -98,13 +100,18 @@ class _SignInState extends State<SignIn> {
                               loading = false;
                             });
                           }
+                          else{
+                            error = "Success!";
+                          }
                         }
                       },
+                      key: const Key("login"),
                     ),
                     SizedBox(height: 12.0),
                     Text(
                       error,
                       style: TextStyle(color: Colors.red, fontSize: 14.0),
+                      key: const Key("error"),
                     ),
                   ],
                 ),

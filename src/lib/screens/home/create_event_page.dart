@@ -2,11 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:speed_meeting/locator.dart';
 import 'package:speed_meeting/services/auth_service.dart';
 import 'package:speed_meeting/services/user_service.dart';
+import '../../models/event.dart';
+import '../../utils/utils.dart';
+
 
 // ignore: camel_case_types
 class Create_Event extends StatelessWidget {
 
   final UserService _userService = locator<UserService>();
+  String _event_name = "",_event_hour="",_event_date="",_event_dur="",_event_rounds="",_event_a="",_event_b="",_event_ratio="";
+  EventData event;
+  void CreateEvent(){
+    //EventData({this.name, this.hour, this.date, this.duration, this.rounds, this.p_a, this.p_b, this.ratio});
+    event = new EventData(_event_name,_event_hour,_event_date,_event_dur,_event_rounds,_event_a,_event_b,_event_ratio);
+  }
+
+  String Validate(){
+    return "message";
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +48,10 @@ class Create_Event extends StatelessWidget {
         ),
         padding: new EdgeInsets.only(top: 100.0),
         child: new Center(
-          child: new Column(
+          child: new ListView(
             children: <Widget>[
               Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 10),
                   child: Text(
                     "Event Name",
                     textAlign: TextAlign.center,
@@ -53,7 +67,12 @@ class Create_Event extends StatelessWidget {
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
                         hintText: 'Enter the Event Name'
                     ),
-                  )),       //Event Name Input
+                  onChanged: (val) {
+                    _event_name=val;print(_event_name);
+                  },
+                  ),
+
+                  ),       //Event Name Input
               Text(
                 "Date",
                 textAlign: TextAlign.center,
@@ -62,14 +81,20 @@ class Create_Event extends StatelessWidget {
               ),          // Date
               Padding(
                   padding : EdgeInsets.only(left : 50,right: 50),
-                  child : TextField(
+                  child : TextFormField(
                     decoration: InputDecoration(
                         fillColor: Colors.grey,
                         filled: true,
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
-                        hintText: 'Enter Date'
+                        hintText: 'Enter Date(MM-DD-YY)'
                     ),
-                  )),       //Date input
+                    onChanged: (val) {
+                      _event_date=val;print(_event_date);print(matchDate(val));
+                    },
+
+                  ),
+
+              ),       //Date input
               Text(
                 "Hour",
                 textAlign: TextAlign.center,
@@ -77,15 +102,20 @@ class Create_Event extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
               Padding(
-                  padding : EdgeInsets.only(left : 50,right: 50),
+                  padding : EdgeInsets.only(left : 50,right: 50,bottom: MediaQuery.of(context).viewInsets.bottom),
                   child : TextField(
                     decoration: InputDecoration(
                         fillColor: Colors.grey,
                         filled: true,
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: BorderSide.none),
-                        hintText: 'Enter Hour'
+                        hintText: 'Enter Hour(24h Format)'
                     ),
-                  )),
+                    enableInteractiveSelection: false,
+                    onChanged: (val) {
+                      _event_hour=val;print(_event_hour);
+                    },
+                  ),
+              ),
               Text(
                 "Meetings",
                 textAlign: TextAlign.center,
@@ -96,7 +126,7 @@ class Create_Event extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text(
-                      "Duration",
+                      "Duration(minutes)",
                       textAlign: TextAlign.center,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(fontSize: 15),
@@ -123,6 +153,9 @@ class Create_Event extends StatelessWidget {
                               filled: true,
                               border: OutlineInputBorder(borderSide: BorderSide.none),
                             ),
+                            onChanged: (val) {
+                              _event_dur=val;print(_event_dur);
+                            },
                           )),),
 
                     SizedBox(
@@ -137,19 +170,22 @@ class Create_Event extends StatelessWidget {
                               filled: true,
                               border: OutlineInputBorder(borderSide: BorderSide.none),
                             ),
+                            onChanged: (val) {
+                              _event_rounds=val;print(_event_rounds);
+                            },
                           )),),
                   ]),
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text(
-                      "Participant A",
+                      "Participant A(#)",
                       textAlign: TextAlign.center,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(fontSize: 15),
                     ),
                     Text(
-                      "Participant B",
+                      "Participant B(#)",
                       textAlign: TextAlign.center,
                       textDirection: TextDirection.ltr,
                       style: TextStyle(fontSize: 15),
@@ -169,6 +205,9 @@ class Create_Event extends StatelessWidget {
                               filled: true,
                               border: OutlineInputBorder(borderSide: BorderSide.none),
                             ),
+                            onChanged: (val) {
+                              _event_a=val;print(_event_a);
+                            },
                           )),),
 
                     SizedBox(
@@ -182,6 +221,9 @@ class Create_Event extends StatelessWidget {
                               filled: true,
                               border: OutlineInputBorder(borderSide: BorderSide.none),
                             ),
+                            onChanged: (val) {
+                              _event_b=val;print(_event_b);
+                            },
                           )),),
                   ]),
               Text(
@@ -204,8 +246,33 @@ class Create_Event extends StatelessWidget {
                               filled: true,
                               border: OutlineInputBorder(borderSide: BorderSide.none),
                             ),
+                            onChanged: (val) {
+                              _event_ratio=val;print(_event_ratio);
+                            },
                           )),)]
               ),
+              Padding(padding: EdgeInsets.only(top : 10),child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 100,
+                      height: 20,
+                      child: Padding(
+                          padding : EdgeInsets.only(top : 0),
+                          child : new ElevatedButton(
+                            child: Text(
+                              "Create",
+                              textAlign: TextAlign.center,
+                            ),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.resolveWith(
+                                      (states) => Colors.red),
+                              foregroundColor: MaterialStateProperty.resolveWith(
+                                      (states) => Colors.black),
+                            ),
+                            onPressed:(){CreateEvent();event.display();},
+                          ),))]
+              )),
             ],
           ),
         ),
