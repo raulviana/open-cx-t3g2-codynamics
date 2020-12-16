@@ -30,11 +30,12 @@ class DatabaseService {
     });
   }
 
-  MeetingData readMeeting(String id) {
+  Future<MeetingData> readMeeting(String id) async {
     MeetingData result;
-    _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
+    await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
           querySnapshot.docs.forEach((doc) {
             if (doc["name"] == id) {
+              debugPrint("Found: " + id);
               result = MeetingData(
                   uid: doc.id,
                   duration: doc["duration"],
@@ -49,10 +50,17 @@ class DatabaseService {
     return result;
   }
 
-  Future addToWaiting(String user, String id) {
-    MeetingData meeting = readMeeting(id);
-    meeting.users[user] = "";
-    // TODO: Save to database
+  Future addToWaiting(String user, String meeting) async {
+    await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
+          querySnapshot.docs.forEach((doc) {
+            if (doc.id == meeting) {
+              debugPrint("Found: " + meeting);
+              Map<String, String> aux = Map.from(doc["waiters"]);
+              aux[user] = "";
+              doc.reference.update(<String, dynamic>{"waiters": aux});
+            }
+          })
+        });
   }
 
   List<String> findTags(String userID) {

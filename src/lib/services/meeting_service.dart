@@ -14,13 +14,13 @@ class MeetingService {
     _databaseService.addToWaiting(userId, roomId);
   }
 
-  String getRoom(String userId, String roomId) {
-    return _databaseService.readMeeting(roomId).users[userId];
+  Future<String> getRoom(String userId, String roomId) async {
+    return (await _databaseService.readMeeting(roomId)).users[userId];
   }
 
   // Room sorting algorithm
-  void assignRooms(String id) {
-    MeetingData meeting = _databaseService.readMeeting(id);
+  void assignRooms(String id) async {
+    MeetingData meeting = await _databaseService.readMeeting(id);
 
     Map<String, List<List<String>>> leaders;
     // Initialize leaders list

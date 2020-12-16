@@ -24,7 +24,7 @@ class _MyAppState extends State<Meeting> {
   final roomText = TextEditingController(text: "plugintestroom");
   final subjectText = TextEditingController(text: "My Plugin Test Meeting");
   final nameText = TextEditingController();
-  bool leader = true;
+  bool leader = false;
   final emailText = TextEditingController();
   var isAudioOnly = true;
   var isAudioMuted = true;
@@ -162,8 +162,11 @@ class _MyAppState extends State<Meeting> {
   _waitMeeting(UserData user) async {
     String roomId;
     DatabaseService db = new DatabaseService();
-    MeetingData meeting = db.readMeeting(roomText.text);
-    if (meeting == null) return 0;
+    MeetingData meeting = await db.readMeeting(roomText.text);
+    if (meeting == null) {
+      debugPrint("Meeting does not exist");
+      return;
+    }
     debugPrint("Meeting exists in database");
 
     if (leader) {
@@ -174,6 +177,7 @@ class _MyAppState extends State<Meeting> {
       roomId = meeting.uid + "-" + user.uid.toString();
     } else {
       // Join waiting queue
+      db.addToWaiting(user.uid.toString(), meeting.uid);
 
       debugPrint("Waiting for owner to start");
       roomId = meeting.uid + "-" + (user.uid.length % 2).toString();
