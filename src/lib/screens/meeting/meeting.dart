@@ -8,6 +8,7 @@ import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
 import 'package:provider/provider.dart';
+import 'package:speed_meeting/models/meeting.dart';
 import 'package:speed_meeting/models/user.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
 import 'package:speed_meeting/services/database_service.dart';
@@ -120,7 +121,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _waitMeeting(nameText.text);
+                      _waitMeeting(user);
                     },
                     child: Text(
                       "Join Meeting",
@@ -158,22 +159,20 @@ class _MyAppState extends State<Meeting> {
     });
   }
 
-  _waitMeeting(String name) async {
+  _waitMeeting(UserData user) async {
     // Entrar na lista de espera
-    // MeetingService ms = new MeetingService();
-    // ms.enterMeeting(name, roomText.text);
-    // ms.assignRooms(roomText.text);
 
-    // wait for ready == true
-    String roomId = (name.length % 2).toString();
+    String identifier = user.name != null ? user.name : user.email;
+    String roomId = roomText.text + "-" + (identifier.length % 2).toString();
+    debugPrint("Waiting for owner to start");
+
     // do {
     //   roomId = ms.getRoom(name, roomText.text);
     //   sleep(Duration(seconds: 1));
     // } while (roomId != "");
 
-
-    debugPrint(name + ", your room is " + roomId);
-    _joinMeeting(roomText.text + "-" + roomId);
+    debugPrint("Done. " + identifier + ", your room is " + roomId);
+    // _joinMeeting(roomId);
   }
 
   _joinMeeting(String roomToConnect) async {
