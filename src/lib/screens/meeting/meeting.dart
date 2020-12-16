@@ -161,18 +161,19 @@ class _MyAppState extends State<Meeting> {
   _waitMeeting(String name) async {
     // Entrar na lista de espera
     // MeetingService ms = new MeetingService();
-    // ms.enterMeeting("user1", roomText.text);
+    // ms.enterMeeting(name, roomText.text);
     // ms.assignRooms(roomText.text);
 
     // wait for ready == true
-    String roomId = (nameText.text.length % 2).toString();
+    String roomId = (name.length % 2).toString();
     // do {
-    //   roomId = ms.getRoom("user1", roomText.text);
+    //   roomId = ms.getRoom(name, roomText.text);
+    //   sleep(Duration(seconds: 1));
     // } while (roomId != "");
 
 
-    debugPrint(name + ", your room is" + roomId);
-    // _joinMeeting(roomText.text + "-" + roomId);
+    debugPrint(name + ", your room is " + roomId);
+    _joinMeeting(roomText.text + "-" + roomId);
   }
 
   _joinMeeting(String roomToConnect) async {
