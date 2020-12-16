@@ -5,6 +5,5 @@ class MeetingData {
   final DateTime start;
   Map<String, String> users;
   List<String> leaders;
-
   MeetingData({this.uid, this.duration, this.name, this.start, this.users, this.leaders});
 }

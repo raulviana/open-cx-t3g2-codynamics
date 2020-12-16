@@ -16,11 +16,10 @@ class UserService {
   final AuthService _authService = locator<AuthService>();
 
   Future<void> updateUser(UserData userData, bool isNewUser) async {
-    if (isNewUser) {
       await _databaseService.saveUser(userData);
-    }
+      if(!isNewUser)
+        _userProvider.setUser(userData);
 
-    _userProvider.setUser(userData);
 
     return null;
   }
