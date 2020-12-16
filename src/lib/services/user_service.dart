@@ -42,7 +42,7 @@ class UserService {
       user = await _authService.signInWithEmailAndPassword(authInfo);
     }
 
-    await updateUser(user, false);
+    await _userProvider.setUser(user);
     return user;
   }
 

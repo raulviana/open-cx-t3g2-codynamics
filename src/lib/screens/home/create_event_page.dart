@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:speed_meeting/locator.dart';
 import 'package:speed_meeting/services/auth_service.dart';
 import 'package:speed_meeting/services/user_service.dart';
+import 'package:speed_meeting/services/meeting_service.dart';
+import 'package:provider/provider.dart';
+import 'package:speed_meeting/providers/user_provider.dart';
 
+import '../../services/meeting_service.dart';
 
 
 // ignore: camel_case_types
@@ -10,8 +15,13 @@ class Create_Event extends StatelessWidget {
 
   final UserService _userService = locator<UserService>();
   String _event_name = "",_event_hour="",_event_date="",_event_dur="";
+
+  DateTime createDate(String date,String hour){
+    return DateTime.parse(date + " " + hour + ":00");
+  }
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
@@ -159,7 +169,11 @@ class Create_Event extends StatelessWidget {
                               foregroundColor: MaterialStateProperty.resolveWith(
                                       (states) => Colors.black),
                             ),
-                            onPressed:(){},
+                            onPressed:(){DateTime startDate = createDate(_event_date, _event_hour);
+                            print(startDate);
+                            Timestamp ts = Timestamp.fromDate(startDate);
+                            CreateMeeting(user.uid,_event_name,int.parse(_event_dur),ts);
+                            },
                           ),))]
               )),
             ],
