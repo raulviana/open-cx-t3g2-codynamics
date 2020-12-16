@@ -65,6 +65,10 @@ class DatabaseService {
   }
 
   void changeWaiters(MeetingData data) async {
+    for (String user in data.users.keys) {
+      debugPrint(user + " goes to room " + data.users[user]);
+    }
+
     await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
           querySnapshot.docs.forEach((doc) {
             if (doc.id == data.uid) {

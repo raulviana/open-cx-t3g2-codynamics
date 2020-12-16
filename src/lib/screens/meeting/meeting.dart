@@ -173,10 +173,9 @@ class _MyAppState extends State<Meeting> {
       debugPrint("Hello, owner");
       // When the owner enters the algorithm is calculated
       MeetingService ms = new MeetingService();
-      await ms.assignRooms(roomText.text);
-    }
-
-    if (leader) {
+      ms.assignRooms(roomText.text);
+      return;
+    } else if (leader) {
       // Join leaders list
       debugPrint("Entering your room");
 

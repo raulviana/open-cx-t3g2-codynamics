@@ -58,7 +58,6 @@ class MeetingService {
     }
 
     void engage(String studentId, String professorId) {
-      debugPrint("engaged " + studentId + " and " + professorId);
       users[studentId][1][0] = professorId;
       leaders[professorId][1].add(studentId);
       leaders[professorId][1].sort((String a, String b) =>
@@ -79,7 +78,7 @@ class MeetingService {
 
     String firstFreeStudent() {
       for (String userId in users.keys) {
-        if (users[userId][1] == [] && userPreferences[userId].length > 0)
+        if (users[userId][1][0] == "" && userPreferences[userId].length > 0)
           return userId;
       }
       return null;
@@ -95,12 +94,12 @@ class MeetingService {
     while (true) {
       String student = firstFreeStudent();
       if (student == null) break;
-      String professor = userPreferences[student][-1];
+      String professor = userPreferences[student].last;
 
       if (hasSpaceForStudent(professor)) {
         engage(student, professor);
       } else {
-        String lastStudent = leaders[professor][1][-1];
+        String lastStudent = leaders[professor][1].last;
         if (similarity(student, professor) >
             similarity(lastStudent, professor)) {
           freeStudent(lastStudent);
@@ -111,17 +110,8 @@ class MeetingService {
     }
 
     for (String user in users.keys) {
-      debugPrint(user + ":" + users[user][1][0]);
+      meeting.users[user] = users[user][1][0];
     }
-
-    // TODO: write on database
-    /*for (String room in leaders.keys) {
-      List<String> users = leaders[room][1];
-      for (String user in users) {
-        debugPrint(user + ": " + room);
-        meeting.users[user] = room;
-      }
-    }*/
 
     _databaseService.changeWaiters(meeting);
   }
