@@ -117,7 +117,7 @@ class _MyAppState extends State<Meeting> {
                   thickness: 2.0,
                 ),
                 SizedBox(
-                  height: 64.0,
+                  height: 32.0,
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
@@ -131,7 +131,41 @@ class _MyAppState extends State<Meeting> {
                   ),
                 ),
                 SizedBox(
-                  height: 48.0,
+                  height: 24.0,
+                ),
+                SizedBox(
+                  height: 32.0,
+                  width: double.maxFinite,
+                  child: RaisedButton(
+                    onPressed: () {
+                      _waitMeeting(user);
+                    },
+                    child: Text(
+                      "Join as Leader",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                SizedBox(
+                  height: 32.0,
+                  width: double.maxFinite,
+                  child: RaisedButton(
+                    onPressed: () {
+                      _startMeeting(user);
+                    },
+                    child: Text(
+                      "Start meeting",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  height: 24.0,
                 ),
               ],
             ),
@@ -157,6 +191,29 @@ class _MyAppState extends State<Meeting> {
     setState(() {
       isVideoMuted = value;
     });
+  }
+
+  _startMeeting(UserData user) async {
+    String roomId;
+    DatabaseService db = new DatabaseService();
+    MeetingData meeting = await db.readMeeting(roomText.text);
+    if (meeting == null) {
+      debugPrint("Meeting does not exist");
+      return;
+    }
+    debugPrint("Meeting exists in database");
+
+    if (meeting.owner == user.uid) {
+      debugPrint("Hello, owner");
+      // When the owner enters the algorithm is calculated
+      debugPrint("Entering your room");
+      roomId = meeting.uid + "-" + user.uid.toString();
+      print("AAAAAAAAAAAAAAA" + roomId);
+      _joinMeeting(roomId);
+    }
+    else{
+      debugPrint("Room not yours , champ!");
+    }
   }
 
   _waitMeeting(UserData user) async {
@@ -195,7 +252,7 @@ class _MyAppState extends State<Meeting> {
     }
 
     debugPrint("Done. " + user.uid + ", your room is " + roomId);
-    // _joinMeeting(roomId);
+     _joinMeeting(roomId);
   }
 
   _joinMeeting(String roomToConnect) async {

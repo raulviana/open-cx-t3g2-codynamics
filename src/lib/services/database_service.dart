@@ -26,7 +26,7 @@ class DatabaseService {
       'duration': meetingData.duration,
       'owner': meetingData.owner,
       'start': meetingData.start,
-      'users': meetingData.users,
+      'waiters': meetingData.users,
       'leaders': meetingData.leaders,
     });
   }
@@ -40,11 +40,11 @@ class DatabaseService {
               result = MeetingData(
                   uid: doc.id,
                   duration: doc["duration"],
-                  name: doc["name"],
+                  name: doc["name"].toString(),
                   start: doc["start"],
                   users: Map.from(doc["waiters"]),
                   leaders: List.from(doc["leaders"]),
-                  owner: doc["owner"]);
+                  owner: doc["owner"].toString());
             }
           })
         });
