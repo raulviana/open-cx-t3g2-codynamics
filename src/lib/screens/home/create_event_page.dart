@@ -7,6 +7,9 @@ import 'package:speed_meeting/services/meeting_service.dart';
 import 'package:provider/provider.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
 
+import '../../models/meeting.dart';
+import '../../services/meeting_service.dart';
+import '../../services/meeting_service.dart';
 import '../../services/meeting_service.dart';
 
 
@@ -14,6 +17,7 @@ import '../../services/meeting_service.dart';
 class Create_Event extends StatelessWidget {
 
   final UserService _userService = locator<UserService>();
+  final MeetingService _meetingService = locator<MeetingService>();
   String _event_name = "",_event_hour="",_event_date="",_event_dur="";
 
   DateTime createDate(String date,String hour){
@@ -172,7 +176,8 @@ class Create_Event extends StatelessWidget {
                             onPressed:(){DateTime startDate = createDate(_event_date, _event_hour);
                             print(startDate);
                             Timestamp ts = Timestamp.fromDate(startDate);
-                            CreateMeeting(user.uid,_event_name,int.parse(_event_dur),ts);
+                            MeetingData NewMeeting = CreateMeeting(user.uid,_event_name,int.parse(_event_dur),ts);
+                            _meetingService.AddMeeting(NewMeeting);
                             },
                           ),))]
               )),

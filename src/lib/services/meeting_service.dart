@@ -5,6 +5,7 @@ import 'package:speed_meeting/services/database_service.dart';
 
 import '../models/meeting.dart';
 import '../models/meeting.dart';
+import '../models/meeting.dart';
 
 class MeetingService {
   //database service - dependency injection - using ioc containers to inject service into this class
@@ -113,11 +114,17 @@ class MeetingService {
       }
     }
   }
+  void AddMeeting(MeetingData d){
+    _databaseService.saveMeeting(d);
+  }
 }
 
 MeetingData CreateMeeting(String owner_id,String name,int duration,Timestamp date){
   List<String> leader = new List();
   Map<String,String> user = new Map();
-  return MeetingData(duration: duration,start: date,leaders: leader,owner: owner_id,users: user);
+  return MeetingData(duration: duration,start: date,leaders: leader,owner: owner_id,users: user,name: name);
 
 }
+
+
+
