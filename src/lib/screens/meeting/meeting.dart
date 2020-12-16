@@ -8,6 +8,7 @@ import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
 import 'package:provider/provider.dart';
+import 'package:speed_meeting/models/user.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
 import 'package:speed_meeting/services/database_service.dart';
 import 'package:speed_meeting/services/meeting_service.dart';
@@ -22,6 +23,7 @@ class _MyAppState extends State<Meeting> {
   final roomText = TextEditingController(text: "plugintestroom");
   final subjectText = TextEditingController(text: "My Plugin Test Meeting");
   final nameText = TextEditingController();
+  bool leader = false;
   final emailText = TextEditingController();
   var isAudioOnly = true;
   var isAudioMuted = true;
@@ -85,37 +87,6 @@ class _MyAppState extends State<Meeting> {
                 SizedBox(
                   height: 16.0,
                 ),
-                TextField(
-                  controller: subjectText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Subject",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  key: Key("NameKey"),
-                  controller: nameText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Display Name",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: emailText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Email",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
                 SizedBox(
                   height: 16.0,
                 ),
@@ -149,7 +120,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _waitMeeting();
+                      _waitMeeting(nameText.text);
                     },
                     child: Text(
                       "Join Meeting",
@@ -187,20 +158,21 @@ class _MyAppState extends State<Meeting> {
     });
   }
 
-  _waitMeeting() async {
+  _waitMeeting(String name) async {
     // Entrar na lista de espera
-    MeetingService ms = new MeetingService();
-    ms.enterMeeting("user1", roomText.text);
-    ms.assignRooms(roomText.text);
+    // MeetingService ms = new MeetingService();
+    // ms.enterMeeting("user1", roomText.text);
+    // ms.assignRooms(roomText.text);
 
     // wait for ready == true
-    String roomId;
-    do {
-      roomId = ms.getRoom("user1", roomText.text);
-    } while (roomId != "");
+    String roomId = (nameText.text.length % 2).toString();
+    // do {
+    //   roomId = ms.getRoom("user1", roomText.text);
+    // } while (roomId != "");
 
-    debugPrint("Your room is" + roomId);
-    _joinMeeting(roomText.text + "-" + roomId);
+
+    debugPrint(name + ", your room is" + roomId);
+    // _joinMeeting(roomText.text + "-" + roomId);
   }
 
   _joinMeeting(String roomToConnect) async {
