@@ -9,7 +9,7 @@ import 'package:speed_meeting/services/user_service.dart';
 class Create_Event extends StatelessWidget {
 
   final UserService _userService = locator<UserService>();
-  String _event_name = "",_event_hour="",_event_date="",_event_dur="",_event_a="",_event_b="";
+  String _event_name = "",_event_hour="",_event_date="",_event_dur="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,57 +137,6 @@ class Create_Event extends StatelessWidget {
                             ),
                             onChanged: (val) {
                               _event_dur=val;print(_event_dur);
-                            },
-                          )),),
-                  ]),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Text(
-                      "Leaders",
-                      textAlign: TextAlign.center,
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    Text(
-                      "Participants",
-                      textAlign: TextAlign.center,
-                      textDirection: TextDirection.ltr,
-                      style: TextStyle(fontSize: 15),
-                    ),
-                  ]),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 50,
-                      height: 20,
-                      child: Padding(
-                          padding : EdgeInsets.only(left : 0,right: 0),
-                          child : TextField(
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              border: OutlineInputBorder(borderSide: BorderSide.none),
-                            ),
-                            onChanged: (val) {
-                              _event_a=val;print(_event_a);
-                            },
-                          )),),
-
-                    SizedBox(
-                      width: 50,
-                      height: 20,
-                      child: Padding(
-                          padding : EdgeInsets.only(left : 0,right: 0),
-                          child : TextField(
-                            decoration: InputDecoration(
-                              fillColor: Colors.grey,
-                              filled: true,
-                              border: OutlineInputBorder(borderSide: BorderSide.none),
-                            ),
-                            onChanged: (val) {
-                              _event_b=val;print(_event_b);
                             },
                           )),),
                   ]),
