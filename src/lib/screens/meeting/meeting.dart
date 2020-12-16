@@ -169,6 +169,13 @@ class _MyAppState extends State<Meeting> {
     }
     debugPrint("Meeting exists in database");
 
+    if (meeting.owner == user.uid) {
+      debugPrint("Hello, owner");
+      // When the owner enters the algorithm is calculated
+      MeetingService ms = new MeetingService();
+      await ms.assignRooms(roomText.text);
+    }
+
     if (leader) {
       // Join leaders list
       debugPrint("Entering your room");

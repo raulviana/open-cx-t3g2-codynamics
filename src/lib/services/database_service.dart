@@ -24,7 +24,7 @@ class DatabaseService {
     return await _meetingsCollection.doc(meetingData.uid).set({
       'name': meetingData.name,
       'duration': meetingData.duration,
-      'owner' : meetingData.owner,
+      'owner': meetingData.owner,
       'start': meetingData.start,
       'users': meetingData.users,
       'leaders': meetingData.leaders,
@@ -64,8 +64,27 @@ class DatabaseService {
         });
   }
 
-  List<String> findTags(String userID) {
-    // TODO: find tags on the database
+  void changeWaiters(MeetingData data) async {
+    await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
+          querySnapshot.docs.forEach((doc) {
+            if (doc.id == data.uid) {
+              debugPrint("Found: " + data.uid);
+              doc.reference.update(<String, dynamic>{"waiters": data.users});
+            }
+          })
+        });
+  }
+
+  Future<List<String>> findTags(String userID) async {
+    /*List<String> result;
+    await _usersCollection.get().then((QuerySnapshot querySnapshot) => {
+          querySnapshot.docs.forEach((doc) {
+            if (doc.id == userID) {
+              debugPrint("Found: " + userID);
+              result = List.from(doc["interests"]);
+            }
+          })
+        });*/
     return ["a", "b"];
   }
 }
