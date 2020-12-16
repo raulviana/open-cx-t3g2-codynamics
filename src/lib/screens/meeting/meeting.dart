@@ -160,18 +160,28 @@ class _MyAppState extends State<Meeting> {
   }
 
   _waitMeeting(UserData user) async {
-    // Entrar na lista de espera
-
-    String identifier = user.name != null ? user.name : user.email;
-    String roomId = roomText.text + "-" + (identifier.length % 2).toString();
+    String roomId;
     debugPrint("Waiting for owner to start");
+    DatabaseService db = new DatabaseService();
+    db.readMeeting("testesalanumero1");
 
-    // do {
-    //   roomId = ms.getRoom(name, roomText.text);
-    //   sleep(Duration(seconds: 1));
-    // } while (roomId != "");
+    if (leader) {
+      // Join leaders list
 
-    debugPrint("Done. " + identifier + ", your room is " + roomId);
+      // if the user is a leader of the meeting, then it joins the room eventId-leaderId
+      roomId = roomText.text + "-" + user.uid.toString();
+    } else {
+      // Join waiting queue
+
+      roomId = roomText.text + "-" + (user.uid.length % 2).toString();
+      // When a room is assigned for the user, that is their room
+      // do {
+      //   roomId = ms.getRoom(name, roomText.text);
+      //   sleep(Duration(seconds: 1));
+      // } while (roomId != "");
+    }
+
+    debugPrint("Done. " + user.uid + ", your room is " + roomId);
     // _joinMeeting(roomId);
   }
 

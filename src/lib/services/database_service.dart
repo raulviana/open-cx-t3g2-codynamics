@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:speed_meeting/models/meeting.dart';
 import 'package:speed_meeting/models/user.dart';
 
@@ -7,7 +8,7 @@ class DatabaseService {
   final CollectionReference _usersCollection =
       FirebaseFirestore.instance.collection("users");
   final CollectionReference _meetingsCollection =
-      FirebaseFirestore.instance.collection("meetings");
+      FirebaseFirestore.instance.collection("meeting");
 
   Future saveUser(UserData userData) async {
     //String name, String email, String socialNetwork, List<String> interests
@@ -31,7 +32,19 @@ class DatabaseService {
 
   MeetingData readMeeting(String id) {
     // TODO: Read from database
-    return new MeetingData();
+
+    _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
+          querySnapshot.docs.forEach((doc) {
+            if (doc["name"] == id) {
+              debugPrint(doc.id);
+              debugPrint(doc["duration"].toString());
+              debugPrint(doc["leaders"].toString());
+              debugPrint(doc["owner"].toString());
+              debugPrint(doc["start"].toString());
+              debugPrint(doc["waiters"].toString());
+            }
+          })
+        });
   }
 
   Future addToWaiting(String user, String id) {
