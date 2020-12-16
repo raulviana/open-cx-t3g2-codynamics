@@ -24,7 +24,7 @@ class _MyAppState extends State<Meeting> {
   final roomText = TextEditingController(text: "plugintestroom");
   final subjectText = TextEditingController(text: "My Plugin Test Meeting");
   final nameText = TextEditingController();
-  bool leader = false;
+  bool leader = true;
   final emailText = TextEditingController();
   var isAudioOnly = true;
   var isAudioMuted = true;
@@ -161,19 +161,22 @@ class _MyAppState extends State<Meeting> {
 
   _waitMeeting(UserData user) async {
     String roomId;
-    debugPrint("Waiting for owner to start");
     DatabaseService db = new DatabaseService();
-    db.readMeeting("testesalanumero1");
+    MeetingData meeting = db.readMeeting(roomText.text);
+    if (meeting == null) return 0;
+    debugPrint("Meeting exists in database");
 
     if (leader) {
       // Join leaders list
+      debugPrint("Entering your room");
 
       // if the user is a leader of the meeting, then it joins the room eventId-leaderId
-      roomId = roomText.text + "-" + user.uid.toString();
+      roomId = meeting.uid + "-" + user.uid.toString();
     } else {
       // Join waiting queue
 
-      roomId = roomText.text + "-" + (user.uid.length % 2).toString();
+      debugPrint("Waiting for owner to start");
+      roomId = meeting.uid + "-" + (user.uid.length % 2).toString();
       // When a room is assigned for the user, that is their room
       // do {
       //   roomId = ms.getRoom(name, roomText.text);

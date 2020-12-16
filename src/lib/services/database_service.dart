@@ -31,20 +31,22 @@ class DatabaseService {
   }
 
   MeetingData readMeeting(String id) {
-    // TODO: Read from database
-
+    MeetingData result;
     _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
           querySnapshot.docs.forEach((doc) {
             if (doc["name"] == id) {
-              debugPrint(doc.id);
-              debugPrint(doc["duration"].toString());
-              debugPrint(doc["leaders"].toString());
-              debugPrint(doc["owner"].toString());
-              debugPrint(doc["start"].toString());
-              debugPrint(doc["waiters"].toString());
+              result = MeetingData(
+                  uid: doc.id,
+                  duration: doc["duration"],
+                  name: doc["name"],
+                  start: doc["start"],
+                  users: Map.from(doc["waiters"]),
+                  leaders: List.from(doc["leaders"]),
+                  owner: doc["owner"]);
             }
           })
         });
+    return result;
   }
 
   Future addToWaiting(String user, String id) {
