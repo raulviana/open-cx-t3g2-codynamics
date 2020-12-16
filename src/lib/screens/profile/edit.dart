@@ -40,6 +40,12 @@ class _EditState extends State<EditProfile> {
     }
   }
 
+  void changedState(bool val, bool newValue,String tag){
+    if(val!=newValue)
+      newValue = !newValue;
+    changedCheckbox(newValue, tag);
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
@@ -81,40 +87,28 @@ class _EditState extends State<EditProfile> {
                 },
               ),CheckboxListTile(title: Text("AI") ,value: user.interests.contains("AI")?true:_ai_tag, onChanged: (val){
                 setState(() {
-                  if(val!=_ai_tag)
-                  _ai_tag = !_ai_tag;
-                  changedCheckbox(_ai_tag, "AI");
-                  print(_interests);
+                  changedState(val, _ai_tag,"AI");
                 });
 
               })
               ,
               CheckboxListTile(title: Text("Networks") ,value: user.interests.contains("Networks")?true:_nw_tag, onChanged: (val){
                 setState(() {
-                  if(val!=_nw_tag)
-                  _nw_tag = !_nw_tag;
-                  changedCheckbox(_nw_tag, "Networks");
-                  print(_interests);
+                  changedState(val, _nw_tag,"Networks");
                 });
 
               })
               ,
               CheckboxListTile(title: Text("Web") ,value: user.interests.contains("Web")?true:_wb_tag, onChanged: (val){
                 setState(() {
-                  if(val!=_wb_tag)
-                  _wb_tag = !_wb_tag;
-                  changedCheckbox(_wb_tag, "Web");
-                  print(_interests);
+                  changedState(val, _wb_tag,"Web");
                 });
 
               })
               ,
               CheckboxListTile(title: Text("Cybersecurity") ,value: user.interests.contains("Cybersecurity")?true:_cs_tag, onChanged: (val){
                 setState(() {
-                  if(val!=_cs_tag)
-                  _cs_tag = !_cs_tag;
-                  changedCheckbox(_cs_tag, "Cybersecurity");
-                  print(_interests);
+                  changedState(val, _cs_tag,"Cybersecurity");
                 });
 
               })
