@@ -121,7 +121,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _waitMeeting(user);
+                      _joinAsLeader(user);
                     },
                     child: Text(
                       "Join Meeting",
@@ -138,7 +138,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _waitMeeting(user);
+                      _joinAsUser(user);
                     },
                     child: Text(
                       "Join as Leader",
@@ -201,22 +201,35 @@ class _MyAppState extends State<Meeting> {
       debugPrint("Meeting does not exist");
       return;
     }
-    debugPrint("Meeting exists in database");
 
-    if (meeting.owner == user.uid) {
-      debugPrint("Hello, owner");
-      // When the owner enters the algorithm is calculated
-      debugPrint("Entering your room");
-      roomId = meeting.uid + "-" + user.uid.toString();
-      print("AAAAAAAAAAAAAAA" + roomId);
-      _joinMeeting(roomId);
+    if (meeting.owner != user.uid) {
+      debugPrint("Room not yours!");
     }
-    else{
-      debugPrint("Room not yours , champ!");
-    }
+
+    debugPrint("Hello, owner. Calculating rooms");
+    MeetingService ms = new MeetingService();
+    ms.assignRooms(roomText.text);
+
+    debugPrint("Entering your room");
+    roomId = meeting.uid + "-" + user.uid.toString();
+    //_joinMeeting(roomId);
   }
 
-  _waitMeeting(UserData user) async {
+  _joinAsLeader(UserData user) async {
+    DatabaseService db = new DatabaseService();
+    MeetingData meeting = await db.readMeeting(roomText.text);
+    if (meeting == null) {
+      debugPrint("Meeting does not exist");
+      return;
+    }
+
+    // TODO: Join leaders list
+
+    debugPrint("Entering your room");
+    _joinMeeting(meeting.uid + "-" + user.uid.toString());
+  }
+
+  _joinAsUser(UserData user) async {
     String roomId;
     DatabaseService db = new DatabaseService();
     MeetingData meeting = await db.readMeeting(roomText.text);
@@ -224,35 +237,22 @@ class _MyAppState extends State<Meeting> {
       debugPrint("Meeting does not exist");
       return;
     }
-    debugPrint("Meeting exists in database");
 
-    if (meeting.owner == user.uid) {
-      debugPrint("Hello, owner");
-      // When the owner enters the algorithm is calculated
-      MeetingService ms = new MeetingService();
-      ms.assignRooms(roomText.text);
-      return;
-    } else if (leader) {
-      // Join leaders list
-      debugPrint("Entering your room");
+    // Join waiting queue
+    db.addToWaiting(user.uid.toString(), meeting.uid);
+    debugPrint("Waiting for owner to start");
 
-      // if the user is a leader of the meeting, then it joins the room eventId-leaderId
-      roomId = meeting.uid + "-" + user.uid.toString();
-    } else {
-      // Join waiting queue
-      db.addToWaiting(user.uid.toString(), meeting.uid);
+    roomId = meeting.uid + "-" + (user.uid.length % 2).toString();
 
-      debugPrint("Waiting for owner to start");
-      roomId = meeting.uid + "-" + (user.uid.length % 2).toString();
-      // When a room is assigned for the user, that is their room
-      // do {
-      //   roomId = ms.getRoom(name, roomText.text);
-      //   sleep(Duration(seconds: 1));
-      // } while (roomId != "");
-    }
+    // TODO: Wait for room
+    // When a room is assigned for the user, that is their room
+    // do {
+    //   roomId = ms.getRoom(name, roomText.text);
+    //   sleep(Duration(seconds: 1));
+    // } while (roomId != "");
 
     debugPrint("Done. " + user.uid + ", your room is " + roomId);
-     _joinMeeting(roomId);
+    _joinMeeting(roomId);
   }
 
   _joinMeeting(String roomToConnect) async {
