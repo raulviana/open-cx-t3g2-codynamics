@@ -51,6 +51,19 @@ class DatabaseService {
     return result;
   }
 
+  Future addToLeaders(String user, String meeting) async {
+    await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
+      querySnapshot.docs.forEach((doc) {
+        if (doc.id == meeting) {
+          debugPrint("Found: " + meeting);
+          List<String> aux = List.from(doc["leaders"]);
+          aux.add(user);
+          doc.reference.update(<String, dynamic>{"leaders": aux});
+        }
+      })
+    });
+  }
+
   Future addToWaiting(String user, String meeting) async {
     await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
           querySnapshot.docs.forEach((doc) {

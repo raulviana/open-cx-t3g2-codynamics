@@ -206,6 +206,7 @@ class _MyAppState extends State<Meeting> {
       debugPrint("Room not yours!");
     }
 
+    db.addToLeaders(user.uid.toString(), meeting.uid);
     debugPrint("Hello, owner. Calculating rooms");
     MeetingService ms = new MeetingService();
     ms.assignRooms(roomText.text);
@@ -223,7 +224,7 @@ class _MyAppState extends State<Meeting> {
       return;
     }
 
-    // TODO: Join leaders list
+    db.addToLeaders(user.uid.toString(), meeting.uid);
 
     debugPrint("Entering your room");
     _joinMeeting(meeting.uid + "-" + user.uid.toString());
