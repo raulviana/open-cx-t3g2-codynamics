@@ -49,7 +49,11 @@ class UserService {
   Future<UserData> register(AuthInfo authInfo) async {
     var user = await _authService.registerWithEmailAndPassword(authInfo);
 
-    await registerUser(user, true);
+    if(user != null)
+      await registerUser(user, true);
+    else
+      await registerUser(user, false);
+
     return user;
   }
 
