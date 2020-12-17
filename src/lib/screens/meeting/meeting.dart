@@ -121,7 +121,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _joinAsLeader(user);
+                      _joinAsUser(user);
                     },
                     child: Text(
                       "Join Meeting",
@@ -138,7 +138,7 @@ class _MyAppState extends State<Meeting> {
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _joinAsUser(user);
+                      _joinAsLeader(user);
                     },
                     child: Text(
                       "Join as Leader",
