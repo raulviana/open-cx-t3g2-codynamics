@@ -16,10 +16,6 @@ class MeetingService {
     _databaseService.addToWaiting(userId, roomId);
   }
 
-  Future<String> getRoom(String userId, String roomId) async {
-    return (await _databaseService.readMeeting(roomId)).users[userId];
-  }
-
   // Room sorting algorithm
   void assignRooms(String id) async {
     MeetingData meeting = await _databaseService.readMeeting(id);

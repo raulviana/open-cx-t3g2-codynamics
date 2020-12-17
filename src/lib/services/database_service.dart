@@ -53,15 +53,15 @@ class DatabaseService {
 
   Future addToLeaders(String user, String meeting) async {
     await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
-      querySnapshot.docs.forEach((doc) {
-        if (doc.id == meeting) {
-          debugPrint("Found: " + meeting);
-          List<String> aux = List.from(doc["leaders"]);
-          aux.add(user);
-          doc.reference.update(<String, dynamic>{"leaders": aux});
-        }
-      })
-    });
+          querySnapshot.docs.forEach((doc) {
+            if (doc.id == meeting) {
+              debugPrint("Found: " + meeting);
+              List<String> aux = List.from(doc["leaders"]);
+              aux.add(user);
+              doc.reference.update(<String, dynamic>{"leaders": aux});
+            }
+          })
+        });
   }
 
   Future addToWaiting(String user, String meeting) async {
@@ -90,6 +90,19 @@ class DatabaseService {
             }
           })
         });
+  }
+
+  Future<String> getRoom(String userId, String meetingId) async {
+    String result;
+    await _meetingsCollection.get().then((QuerySnapshot querySnapshot) => {
+          querySnapshot.docs.forEach((doc) {
+            if (doc.id == meetingId) {
+              debugPrint("Found: " + meetingId);
+              result = Map.from(doc["waiters"])[userId];
+            }
+          })
+        });
+    return result;
   }
 
   Future<List<String>> findTags(String userID) async {

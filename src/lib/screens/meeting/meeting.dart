@@ -243,17 +243,14 @@ class _MyAppState extends State<Meeting> {
     db.addToWaiting(user.uid.toString(), meeting.uid);
     debugPrint("Waiting for owner to start");
 
-    roomId = meeting.uid + "-" + (user.uid.length % 2).toString();
-
-    // TODO: Wait for room
     // When a room is assigned for the user, that is their room
-    // do {
-    //   roomId = ms.getRoom(name, roomText.text);
-    //   sleep(Duration(seconds: 1));
-    // } while (roomId != "");
+    do {
+      sleep(Duration(seconds: 1));
+      roomId = await db.getRoom(user.uid, meeting.uid);
+    } while (roomId == "");
 
     debugPrint("Done. " + user.uid + ", your room is " + roomId);
-    _joinMeeting(roomId);
+    _joinMeeting(meeting.uid + "-" + roomId);
   }
 
   _joinMeeting(String roomToConnect) async {
