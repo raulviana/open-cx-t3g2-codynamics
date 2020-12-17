@@ -213,7 +213,7 @@ class _MyAppState extends State<Meeting> {
 
     debugPrint("Entering your room");
     roomId = meeting.uid + "-" + user.uid.toString();
-    //_joinMeeting(roomId);
+    _joinMeeting(roomId);
   }
 
   _joinAsLeader(UserData user) async {
