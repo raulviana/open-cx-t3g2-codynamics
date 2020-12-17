@@ -34,7 +34,7 @@ Thank you!
 
 *João Francisco de Pinho Brandão | 201705573*
 
-*Raúl Manuel Fidalgo da Silva Teixeira Viana | 201208089*
+*Raul Manuel Fidalgo da Silva Teixeira Viana | 201208089*
 
 ---
 
