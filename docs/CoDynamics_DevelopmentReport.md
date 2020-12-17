@@ -425,8 +425,12 @@ In this iteration, we selected the user stories with different prioritization cr
 We implemented the 
 - Join Meeting
 
+[Second Release - v0.2](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.2)
+
 #### Third Iteration
 In this iteration, we tried to start to put it all together. We integrated the firebase and connected it to the app to achieve data persistency. We made all of the screens connected. The release starts to have the using feeling of the final product.
+
+[Third Release - v0.03](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.3)
 
 #### Fourth Iteration
 In this iteration, we tried to implement the unit and acceptance tests. After some struggle with the acceptance tests, we concluded that our design was wrong and it couldn't be possible. We had to refactor all the code so we could make dependency injection throughout the different screens.
@@ -434,14 +438,12 @@ After that, we could implement acceptance tests in two simple scenarios and unit
 
 ---
 ## Test
-#TODO
-There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
 
-In this section it is only expected to include the following:
-* test plan describing the list of features to be tested and the testing methods and tools;
-* test case specifications to verify the functionalities, using unit tests and acceptance tests.
- 
-A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
+We have implemented some acceptance tests. We made them fully automated.
+The testing goal in this project was to become familiar with acceptance testing, mainly with Gherkin package. So we choose just two features, and we created acceptance tests for them. All acceptance tests are executed automatically if the app is run in test mode. 
+We chose to cover the **login** and **logout** features with the acceptance tests. This decision was based on the fact that they are very simple states, and the result can be tested simply. 
+We tested a successful and an unsuccessful login and also a logout. 
+The test folder can be found [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/tree/master/src/test_driver).
 
 ---
 ## Configuration and change management
