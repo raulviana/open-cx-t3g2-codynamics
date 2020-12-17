@@ -443,6 +443,7 @@ We have implemented some acceptance tests. We made them fully automated.
 The testing goal in this project was to become familiar with acceptance testing, mainly with Gherkin package. So we choose just two features, and we created acceptance tests for them. All acceptance tests are executed automatically if the app is run in test mode. 
 We chose to cover the **login** and **logout** features with the acceptance tests. This decision was based on the fact that they are very simple states, and the result can be tested simply. 
 We tested a successful and an unsuccessful login and also a logout. 
+
 The test folder can be found [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/tree/master/src/test_driver).
 
 ---
