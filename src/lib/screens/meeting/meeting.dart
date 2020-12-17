@@ -65,16 +65,7 @@ class _MyAppState extends State<Meeting> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: 24.0,
-                ),
-                TextField(
-                  controller: serverText,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Server URL",
-                      hintText: "Hint: Leave empty for meet.jitsi.si"),
-                ),
+
                 SizedBox(
                   height: 16.0,
                 ),
