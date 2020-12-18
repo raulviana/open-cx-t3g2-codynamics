@@ -31,7 +31,7 @@ class Home extends StatelessWidget {
           child: new ListView(
             children: <Widget>[
               Image(
-                image: AssetImage("images/speed_meeting.jpeg"),
+                image: AssetImage("images/ic_launcher.png"),
               ),
               Padding(
                   padding: EdgeInsets.only(top: 50),
