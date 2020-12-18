@@ -429,7 +429,7 @@ We implemented the
 [Second Release - v0.2](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.2)
 
 #### Third Iteration
-In this iteration, we tried to start to put it all together. We integrated the firebase and connected it to the app to achieve data persistency. We made all of the screens connected. The release starts to have the using feeling of the final product.
+In this iteration, we tried to start to put it all together. We integrated the firebase and connected it to the app frontend to achieve data persistency. We made all of the screens connected. The release starts to have the using feeling of the final product.
 
 [Third Release - v0.03](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.3)
 
