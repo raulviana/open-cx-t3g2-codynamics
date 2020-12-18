@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: locator<UserProvider>(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Wrapper(),
         routes: <String, WidgetBuilder>{
           '/CreateEvent': (context) => Create_Event(),

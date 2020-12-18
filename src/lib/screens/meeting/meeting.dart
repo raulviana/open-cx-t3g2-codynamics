@@ -8,7 +8,11 @@ import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
 import 'package:provider/provider.dart';
+import 'package:speed_meeting/models/meeting.dart';
+import 'package:speed_meeting/models/user.dart';
 import 'package:speed_meeting/providers/user_provider.dart';
+import 'package:speed_meeting/services/database_service.dart';
+import 'package:speed_meeting/services/meeting_service.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -20,6 +24,7 @@ class _MyAppState extends State<Meeting> {
   final roomText = TextEditingController(text: "plugintestroom");
   final subjectText = TextEditingController(text: "My Plugin Test Meeting");
   final nameText = TextEditingController();
+  bool leader = false;
   final emailText = TextEditingController();
   var isAudioOnly = true;
   var isAudioMuted = true;
@@ -44,7 +49,7 @@ class _MyAppState extends State<Meeting> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
-    
+
     emailText.text = user.email;
     nameText.text = user.name?.isNotEmpty == true ? user.name : user.email;
     return MaterialApp(
@@ -61,16 +66,6 @@ class _MyAppState extends State<Meeting> {
             child: Column(
               children: <Widget>[
                 SizedBox(
-                  height: 24.0,
-                ),
-                TextField(
-                  controller: serverText,
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Server URL",
-                      hintText: "Hint: Leave empty for meet.jitsi.si"),
-                ),
-                SizedBox(
                   height: 16.0,
                 ),
                 TextField(
@@ -78,37 +73,6 @@ class _MyAppState extends State<Meeting> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Room",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: subjectText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Subject",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  key: Key("NameKey"),
-                  controller: nameText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Display Name",
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                TextField(
-                  controller: emailText,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Email",
                   ),
                 ),
                 SizedBox(
@@ -143,11 +107,11 @@ class _MyAppState extends State<Meeting> {
                   thickness: 2.0,
                 ),
                 SizedBox(
-                  height: 64.0,
+                  height: 32.0,
                   width: double.maxFinite,
                   child: RaisedButton(
                     onPressed: () {
-                      _joinMeeting();
+                      _joinAsUser(user);
                     },
                     child: Text(
                       "Join Meeting",
@@ -157,7 +121,41 @@ class _MyAppState extends State<Meeting> {
                   ),
                 ),
                 SizedBox(
-                  height: 48.0,
+                  height: 24.0,
+                ),
+                SizedBox(
+                  height: 32.0,
+                  width: double.maxFinite,
+                  child: RaisedButton(
+                    onPressed: () {
+                      _joinAsLeader(user);
+                    },
+                    child: Text(
+                      "Join as Leader",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                SizedBox(
+                  height: 32.0,
+                  width: double.maxFinite,
+                  child: RaisedButton(
+                    onPressed: () {
+                      _startMeeting(user);
+                    },
+                    child: Text(
+                      "Start meeting",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    color: Colors.blue,
+                  ),
+                ),
+                SizedBox(
+                  height: 24.0,
                 ),
               ],
             ),
@@ -185,7 +183,69 @@ class _MyAppState extends State<Meeting> {
     });
   }
 
-  _joinMeeting() async {
+  _startMeeting(UserData user) async {
+    String roomId;
+    DatabaseService db = new DatabaseService();
+    MeetingData meeting = await db.readMeeting(roomText.text);
+    if (meeting == null) {
+      debugPrint("Meeting does not exist");
+      return;
+    }
+
+    if (meeting.owner != user.uid) {
+      debugPrint("Room not yours!");
+      return;
+    }
+
+    await db.addToLeaders(user.uid.toString(), meeting.uid);
+    debugPrint("Hello, owner. Calculating rooms");
+
+    MeetingService ms = new MeetingService();
+    ms.assignRooms(roomText.text);
+
+    debugPrint("Entering your room");
+    roomId = meeting.uid + "-" + user.uid.toString();
+    _joinMeeting(roomId);
+  }
+
+  _joinAsLeader(UserData user) async {
+    DatabaseService db = new DatabaseService();
+    MeetingData meeting = await db.readMeeting(roomText.text);
+    if (meeting == null) {
+      debugPrint("Meeting does not exist");
+      return;
+    }
+
+    db.addToLeaders(user.uid.toString(), meeting.uid);
+
+    debugPrint("Entering your room");
+    _joinMeeting(meeting.uid + "-" + user.uid.toString());
+  }
+
+  _joinAsUser(UserData user) async {
+    String roomId;
+    DatabaseService db = new DatabaseService();
+    MeetingData meeting = await db.readMeeting(roomText.text);
+    if (meeting == null) {
+      debugPrint("Meeting does not exist");
+      return;
+    }
+
+    // Join waiting queue
+    db.addToWaiting(user.uid.toString(), meeting.uid);
+    debugPrint("Waiting for owner to start");
+
+    // When a room is assigned for the user, that is their room
+    do {
+      sleep(Duration(seconds: 1));
+      roomId = await db.getRoom(user.uid, meeting.uid);
+    } while (roomId == "");
+
+    debugPrint("Done. " + user.uid + ", your room is " + roomId);
+    _joinMeeting(meeting.uid + "-" + roomId);
+  }
+
+  _joinMeeting(String roomToConnect) async {
     String serverUrl =
         serverText.text?.trim()?.isEmpty ?? "" ? null : serverText.text;
 
@@ -208,7 +268,7 @@ class _MyAppState extends State<Meeting> {
 
       // Define meetings options here
       var options = JitsiMeetingOptions()
-        ..room = roomText.text
+        ..room = roomToConnect
         ..serverURL = serverUrl
         ..subject = subjectText.text
         ..userDisplayName = nameText.text

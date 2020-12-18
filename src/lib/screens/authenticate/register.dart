@@ -46,6 +46,7 @@ class _RegisterState extends State<Register> {
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
               child: Form(
                 key: _formKey,
+                child: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 20.0),
@@ -107,6 +108,7 @@ class _RegisterState extends State<Register> {
                   ],
                 ),
               ),
+            ),
             ),
           );
   }

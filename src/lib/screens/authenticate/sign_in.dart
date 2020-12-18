@@ -45,77 +45,76 @@ class _SignInState extends State<SignIn> {
             ),
             body: Container(
               padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 20.0),
-                    TextFormField(
-                      decoration:
-                          textInputDecoration.copyWith(hintText: "Email"),
-                      validator: (val) => val.isEmpty ? "Enter an email" : null,
-                      onChanged: (val) {
-                        setState(() {
-                          email = val;
-                        });
-                      },
-                      key: const Key("email"),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    TextFormField(
-                      decoration:
-                          textInputDecoration.copyWith(hintText: "Password"),
-                      validator: (val) => val.length < 8
-                          ? "Enter a password 8+ characters long"
-                          : null,
-                      obscureText: true,
-                      onChanged: (val) {
-                        setState(() {
-                          password = val;
-                        });
-                      },
-                      key: const Key("password"),
-                    ),
-                    SizedBox(height: 20.0),
-                    RaisedButton(
-                      color: Colors.red,
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          setState(() {
-                            loading = true;
-                          });
-                          dynamic result =
-                              await _userService.signIn(authInfo :
-                                  AuthInfo(email, password));
-                          if (result == null) {
+              child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(height: 20.0),
+                        TextFormField(
+                          decoration:
+                              textInputDecoration.copyWith(hintText: "Email"),
+                          validator: (val) => val.isEmpty ? "Enter an email" : null,
+                          onChanged: (val) {
                             setState(() {
-                              error =
-                                  "Error: Something went wrong. User sign in failed.";
-                              loading = false;
+                              email = val;
                             });
-                          }
-                          else{
-                            error = "Success!";
-                          }
-                        }
-                      },
-                      key: const Key("login"),
+                          },
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        TextFormField(
+                          decoration:
+                              textInputDecoration.copyWith(hintText: "Password"),
+                          validator: (val) => val.length < 8
+                              ? "Enter a password 8+ characters long"
+                              : null,
+                          obscureText: true,
+                          onChanged: (val) {
+                            setState(() {
+                              password = val;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 20.0),
+                        RaisedButton(
+                          color: Colors.red,
+                          child: Text(
+                            "Sign In",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              setState(() {
+                                loading = true;
+                              });
+                              dynamic result =
+                                  await _userService.signIn(authInfo :
+                                      AuthInfo(email, password));
+                              if (result == null) {
+                                setState(() {
+                                  error =
+                                      "Error: Something went wrong. User sign in failed.";
+                                  loading = false;
+                                });
+                              }
+                            }
+                          },
+                        ),
+                        SizedBox(height: 12.0),
+                        Text(
+                          error,
+                          style: TextStyle(color: Colors.red, fontSize: 14.0),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 12.0),
-                    Text(
-                      error,
-                      style: TextStyle(color: Colors.red, fontSize: 14.0),
-                      key: const Key("error"),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
             ),
           );
   }

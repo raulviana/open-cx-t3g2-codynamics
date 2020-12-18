@@ -20,17 +20,36 @@ class _EditState extends State<EditProfile> {
   final UserService _userService = locator<UserService>();
   final _formKey = GlobalKey<FormState>();
   bool loading = false;
+  bool _ai_tag = false;
+  bool _wb_tag = false;
+  bool _cs_tag = false;
+  bool _nw_tag = false;
 
   String email;
   String name;
   String socialNetwork;
-  List<String> interests;
+  List<String> _interests = new List<String>();
   String error = "";
+
+
+  void changedCheckbox(bool newValue,String t){
+    if(newValue)
+      _interests.add(t);
+    else{
+      _interests.remove(t);
+    }
+  }
+
+  void changedState(bool val, bool newValue,String tag){
+    if(val!=newValue)
+      newValue = !newValue;
+    changedCheckbox(newValue, tag);
+  }
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user;
-
+    _interests = user.interests?? null;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
@@ -66,7 +85,34 @@ class _EditState extends State<EditProfile> {
                     email = val;
                   });
                 },
-              ),
+              ),CheckboxListTile(title: Text("AI") ,value: user.interests.contains("AI")?true:_ai_tag, onChanged: (val){
+                setState(() {
+                  changedState(val, _ai_tag,"AI");
+                });
+
+              })
+              ,
+              CheckboxListTile(title: Text("Networks") ,value: user.interests.contains("Networks")?true:_nw_tag, onChanged: (val){
+                setState(() {
+                  changedState(val, _nw_tag,"Networks");
+                });
+
+              })
+              ,
+              CheckboxListTile(title: Text("Web") ,value: user.interests.contains("Web")?true:_wb_tag, onChanged: (val){
+                setState(() {
+                  changedState(val, _wb_tag,"Web");
+                });
+
+              })
+              ,
+              CheckboxListTile(title: Text("Cybersecurity") ,value: user.interests.contains("Cybersecurity")?true:_cs_tag, onChanged: (val){
+                setState(() {
+                  changedState(val, _cs_tag,"Cybersecurity");
+                });
+
+              })
+              ,
               SizedBox(height: 20.0),
               RaisedButton(
                 color: Colors.red,
@@ -77,12 +123,12 @@ class _EditState extends State<EditProfile> {
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     await _userService.updateUser(
-                        UserData(
+                        new UserData(
                             uid: user.uid,
                             name: name ?? user.name,
                             email: email ?? user.email,
                             socialNetwork: socialNetwork ?? user.socialNetwork,
-                            interests: interests ?? user.interests),
+                            interests: _interests ?? user.interests),
                         false);
                     Navigator.pop(context);
                   }
