@@ -65,7 +65,6 @@ class _MyAppState extends State<Meeting> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-
                 SizedBox(
                   height: 16.0,
                 ),
@@ -195,10 +194,12 @@ class _MyAppState extends State<Meeting> {
 
     if (meeting.owner != user.uid) {
       debugPrint("Room not yours!");
+      return;
     }
 
     await db.addToLeaders(user.uid.toString(), meeting.uid);
     debugPrint("Hello, owner. Calculating rooms");
+
     MeetingService ms = new MeetingService();
     ms.assignRooms(roomText.text);
 
