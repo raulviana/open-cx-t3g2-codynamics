@@ -403,12 +403,13 @@ Create Event Page
 
 
 
-We also opted with Firebase for the data persistency in an early stage because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
 
 #### First Iteration
 On the first iteration, we started to dedicate some time to discuss the most prominent differences between online and non-online events. We concluded that we could try to develop an application that would mimic the interactions taken on a non-online event coffee-break in an online one.
 
 We discussed the best programming approach. To develop fast and easily to both Android and IOS platforms, we concluded that Flutter and Dart would be the better development option. It allows developing to Android and IOS at the same time and would make a possible integration with the ***open-cx*** project also easier. 
+We also opted with Firebase for the data persistency in an early stage because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
+
 So, in this iteration, we dedicated some time to learning about Flutter architecture and Dart syntax.
 
 We also spent some time implementing the first user stories. We chose the user stories based on the easiness and priority.
