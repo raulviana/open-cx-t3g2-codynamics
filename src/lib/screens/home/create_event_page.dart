@@ -82,6 +82,7 @@ class Create_Event extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),          // Date
               Padding(
+
                 padding : EdgeInsets.only(left : 50,right: 50),
                 child : TextFormField(
                   decoration: InputDecoration(
@@ -95,7 +96,6 @@ class Create_Event extends StatelessWidget {
                   },
 
                 ),
-
               ),       //Date input
               Text(
                 "Hour",
@@ -104,6 +104,7 @@ class Create_Event extends StatelessWidget {
                 style: TextStyle(fontSize: 20),
               ),
               Padding(
+
                 padding : EdgeInsets.only(left : 50,right: 50,bottom: MediaQuery.of(context).viewInsets.bottom),
                 child : TextField(
                   decoration: InputDecoration(
@@ -179,6 +180,7 @@ class Create_Event extends StatelessWidget {
                             MeetingData NewMeeting = CreateMeeting(user.uid,_event_name,int.parse(_event_dur),ts);
                             _meetingService.AddMeeting(NewMeeting);
                             },
+
                           ),))]
               )),
             ],

@@ -1,0 +1,17 @@
+import 'package:flutter_driver/flutter_driver.dart';
+import 'package:flutter_gherkin/flutter_gherkin.dart';
+import 'package:gherkin/gherkin.dart';
+
+StepDefinitionGeneric enter_info() {
+  return given4<String, String,String,String, FlutterWorld>(
+    'Given I provide my {string} as {string} and my {string} as {string}',
+        (key, email,key2,pass, context) async {
+      final locator = find.byValueKey(key);
+      final locator1 = find.byValueKey(key2);
+      await FlutterDriverUtils.tap(context.world.driver, locator);
+      await FlutterDriverUtils.enterText(context.world.driver, locator,email);
+      await FlutterDriverUtils.tap(context.world.driver, locator1);
+      await FlutterDriverUtils.enterText(context.world.driver, locator1,pass);
+    },
+  );
+}

@@ -34,7 +34,7 @@ Thank you!
 
 *João Francisco de Pinho Brandão | 201705573*
 
-*Raúl Manuel Fidalgo da Silva Teixeira Viana | 201208089*
+*Raul Manuel Fidalgo da Silva Teixeira Viana | 201208089*
 
 ---
 
@@ -360,34 +360,21 @@ As a **participant**, I want to be able to **pair with other participants** whic
 
 
 
-**INVEST in good user stories**. 
-You may add more details after, but the shorter and complete, the better. In order to decide if the user story is good, please follow the [INVEST guidelines](https://xp123.com/articles/invest-in-good-stories-and-smart-tasks/).
-
-**User interface mockups**.
-After the user story text, you should add a draft of the corresponding user interfaces, a simple mockup or draft, if applicable.
-
-**Acceptance tests**.
-For each user story you should write also the acceptance tests (textually in Gherkin), i.e., a description of scenarios (situations) that will help to confirm that the system satisfies the requirements addressed by the user story.
-
-**Value and effort**.
-At the end, it is good to add a rough indication of the value of the user story to the customers (e.g. [MoSCoW](https://en.wikipedia.org/wiki/MoSCoW_method) method) and the team should add an estimation of the effort to implement it, for example, using t-shirt sizes (XS, S, M, L, XL).
-
 ### Domain model
 
-To better understand the context of the software system, it is very useful to have a simple UML class diagram with all the key concepts (names, attributes) and relationships involved of the problem domain addressed by your module.
+![domain model](https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/domain_model.jpg)
+<br>
+This simple UML class diagram illustrates all key concepts and relationships involved in the problem domain addressed by our project. 
 
 ---
 
 ## Architecture and Design
-The architecture of a software system encompasses the set of key decisions about its overall organization. 
 
-A well written architecture document is brief but reduces the amount of time it takes new programmers to a project to understand the code to feel able to make modifications and enhancements.
-
-To document the architecture requires describing the decomposition of the system in their parts (high-level components) and the key behaviors and collaborations between them. 
-
-In this section you should start by briefly describing the overall components of the project and their interrelations. You should also describe how you solved typical problems you may have encountered, pointing to well-known architectural and design patterns, if applicable.
 
 ### Logical architecture
+
+# to-do
+
 The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
 
 It can be beneficial to present the system both in a horizontal or vertical decomposition:
@@ -395,62 +382,88 @@ It can be beneficial to present the system both in a horizontal or vertical deco
 * vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
 
 ### Physical architecture
-The goal of this subsection is to document the high-level physical structure of the software system (machines, connections, software components installed, and their dependencies) using UML deployment diagrams or component diagrams (separate or integrated), showing the physical structure of the system.
+![Physical Architecture](https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/vertical_protocol.jpg.jpg)
 
-It should describe also the technologies considered and justify the selections made. Examples of technologies relevant for openCX are, for example, frameworks for mobile applications (Flutter vs ReactNative vs ...), languages to program with microbit, and communication with things (beacons, sensors, etc.).
 
 ### Prototype
-To help on validating all the architectural, design and technological decisions made, we usually implement a vertical prototype, a thin vertical slice of the system.
+In the initial prototype phase, we started to skech the app in mock ups. This mock ups helped us to make a picture of the app usage flow and the screens we will need.
 
-In this subsection please describe in more detail which, and how, user(s) story(ies) were implemented.
+<img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/welcomePage.png" width="200" heigth="300">
+Home Screen
+<br>
+<img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/loginSignUpPage.png" width="200" heigth="300">
+SignIn Page
+<br>
+<img src="https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/createEventPage.png" width="200" heigth="300">
+Create Event Page
 
 ---
 
 ## Implementation
-Regular product increments are a good practice of product management. 
 
-While not necessary, sometimes it might be useful to explain a few aspects of the code that have the greatest potential to confuse software engineers about how it works. Since the code should speak by itself, try to keep this section as short and simple as possible.
 
-Use cross-links to the code repository and only embed real fragments of code when strictly needed, since they tend to become outdated very soon.
+
+
+#### First Iteration
+On the first iteration, we started to dedicate some time to discuss the most prominent differences between online and non-online events. We concluded that we could try to develop an application that would mimic the interactions taken on a non-online event coffee-break in an online one.
+
+We discussed the best programming approach. To develop fast and easily to both Android and IOS platforms, we concluded that Flutter and Dart would be the better development option. It allows developing to Android and IOS at the same time and would make a possible integration with the ***open-cx*** project also easier. 
+We also opted with Firebase for the data persistency in an early stage because it's a very easy and fast persistent system to configure, and eventually, if needed, we could switch to the open-cx internal server.
+
+So, in this iteration, we dedicated some time to learning about Flutter architecture and Dart syntax.
+
+We also spent some time implementing the first user stories. We chose the user stories based on the easiness and priority.
+
+We implemented the first screens
+- SignIn
+- Register
+- Create Event
+
+[First Release - v0.1](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.1)
+
+#### Second Iteration
+In this iteration, we selected the user stories with different prioritization criteria. Instead of picking the easiest and faster to implement, we chose those that seemed to have more value to the user. We tried to start showing the client what our app could do.
+We implemented the 
+- Join Meeting
+
+[Second Release - v0.2](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.2)
+
+#### Third Iteration
+In this iteration, we tried to start to put it all together. We integrated the firebase and connected it to the app frontend to achieve data persistency. We made all of the screens connected. The release starts to have the using feeling of the final product.
+
+[Third Release - v0.03](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/releases/tag/v0.3)
+
+#### Fourth Iteration
+In this iteration, we tried to implement the unit and acceptance tests. After some struggle with the acceptance tests, we concluded that our design was wrong and it couldn't be possible. We had to refactor all the code so we could make dependency injection throughout the different screens.
+After that, we could implement acceptance tests in two simple scenarios and unit tests in some key code fragments. 
 
 ---
 ## Test
 
-There are several ways of documenting testing activities, and quality assurance in general, being the most common: a strategy, a plan, test case specifications, and test checklists.
+We have implemented some acceptance tests. We made them fully automated.
+The testing goal in this project was to become familiar with acceptance testing, mainly with Gherkin package. So we choose just two features, and we created acceptance tests for them. All acceptance tests are executed automatically if the app is run in test mode. 
+We chose to cover the **login** and **logout** features with the acceptance tests. This decision was based on the fact that they are very simple states, and the result can be tested simply. 
+We tested a successful and an unsuccessful login and also a logout. 
 
-In this section it is only expected to include the following:
-* test plan describing the list of features to be tested and the testing methods and tools;
-* test case specifications to verify the functionalities, using unit tests and acceptance tests.
- 
-A good practice is to simplify this, avoiding repetitions, and automating the testing actions as much as possible.
+The test folder can be found [here](https://github.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/tree/master/src/test_driver).
 
 ---
 ## Configuration and change management
 
-Configuration and change management are key activities to control change to, and maintain the integrity of, a project’s artifacts (code, models, documents).
+For this ESOF project, we used a very simple approach. We managed feature requests, bug fixes, and improvements, using GitHub Flow.
 
-For the purpose of ESOF, we will use a very simple approach, just to manage feature requests, bug fixes, and improvements, using GitHub issues and following the [GitHub flow](https://guides.github.com/introduction/flow/).
-
+- Creation of **branches** for every new feature/user story, using easy-to-understand names
+- Requesting **pull requests** when a certain branch was ready to be added to the master branch
+- Generating **releases** for each product iteration
+All pull requests were revised, discussed and tested of in order to make sure that the pretended functionality was achieved, with no errors.
+In that way, master was açways ready to be tested by the client with the features developed until that particular moment. 
 
 ---
 
 ## Project management
+The project management is done using GitHub Project with the following structure:
 
-Software project management is an art and science of planning and leading software projects, in which software projects are planned, implemented, monitored and controlled.
-
-In the context of ESOF, we expect that each team adopts a project management tool capable of registering tasks, assign tasks to people, add estimations to tasks, monitor tasks progress, and therefore being able to track their projects.
-
-Example of tools to do this are:
-  * [Trello.com](https://trello.com)
-  * [Github Projects](https://github.com/features/project-management/com)
-  * [Pivotal Tracker](https://www.pivotaltracker.com)
-  * [Jira](https://www.atlassian.com/software/jira)
-
-We recommend to use the simplest tool that can possibly work for the team.
-
-
----
-
-## Evolution - contributions to open-cx
-
-Describe your contribution to open-cx (iteration 5), linking to the appropriate pull requests, issues, documentation.
+- **User Stories**: User stories/features planned to be integrated in the project.
+- **To Do**: backend features and other tasks not considered user stories to be done.
+- **In Progress**: User stories that are currently being worked on.
+- **Done**: User stories/tasks that have already been done and successfully tested.
