@@ -373,13 +373,7 @@ This simple UML class diagram illustrates all key concepts and relationships inv
 
 ### Logical architecture
 
-# to-do
-
-The purpose of this subsection is to document the high-level logical structure of the code, using a UML diagram with logical packages, without the worry of allocating to components, processes or machines.
-
-It can be beneficial to present the system both in a horizontal or vertical decomposition:
-* horizontal decomposition may define layers and implementation concepts, such as the user interface, business logic and concepts; 
-* vertical decomposition can define a hierarchy of subsystems that cover all layers of implementation.
+![Logical Architecture](https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/logicalarchitecture.png)
 
 ### Physical architecture
 ![Physical Architecture](https://raw.githubusercontent.com/FEUP-ESOF-2020-21/open-cx-t3g2-codynamics/master/docs/images/vertical_protocol.jpg.jpg)
