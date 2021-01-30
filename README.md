@@ -1,6 +1,6 @@
 # <b>SPEED MEETING</b>
 
-Project for the Software Engineering (ESOF) class of the Master in Informatics and Computer Engineering (MIEIC) at the Faculty of Engineering of the University of Porto (FEUP).
+Project for the Software Engineering ([Engenharia de Software - ESOF](https://sigarra.up.pt/feup/pt/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=459481)) class of the Master in Informatics and Computer Engineering (MIEIC) at the Faculty of Engineering of the University of Porto (FEUP).
  
 ## Tech/framework used
 
